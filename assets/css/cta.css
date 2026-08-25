@@ -1,0 +1,31 @@
+.cta-section{
+        padding: 40px 32px;
+    background: white;
+    text-align: center;
+    }
+   
+    .cta h2{
+font-size: 44px;
+    color: #331042;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+    }
+    .cta p{
+     color: #64748b;
+    font-size: 19px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    }
+    
+    .cta-btn{
+       
+    background-color: #e7e7e7; 
+    transition: transform 0.3s ease;
+    color: #1d0a24;
+    }
+    .cta-btn:hover{
+        transform: translateY(-5px);
+       color:#1d0a24;
+        background-color: #e7e7e7; 
+    }

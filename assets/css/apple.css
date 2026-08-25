@@ -1,0 +1,598 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==================== Model/Storage/Condition/Accessories tab-bar ====================
+   Hidden - the numbered stepper (top of the calc-widget) already shows this progress.
+   Buttons stay in the DOM so goToTab() still works internally. */
+#pills-tab {
+  justify-content: center;
+  gap: 10px;
+  display: none !important;
+}
+
+#pills-tab .nav-link {
+  color: #16112c;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+#pills-tab .nav-link.active {
+  background: linear-gradient(90deg, #7b2ff7, #21d4fd) !important;
+  color: #fff !important;
+}
+
+#pills-tab .nav-link:hover {
+  color: #7b2ff7;
+}
+
+/* ==================== Buttons ==================== */
+.btn-proceed {
+  background-color: rgb(9, 4, 37);
+  color: #f7c82f;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-proceed:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  color: #f7c82f;
+}
+
+.btn-pro {
+  background: #ffffff;
+  color: #16112c;
+  border: 1.5px solid rgba(193, 233, 16, 0.774);
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-pro:hover {
+  background: rgba(123, 47, 247, 0.06);
+  border-color: #e3f72f;
+  color: #16112c;
+}
+
+/* ==================== Model cards ==================== */
+.card.fon-card {
+  background: #f7f6f6;
+  border: 1.5px solid rgb(233, 233, 120);
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.card.fon-card:hover {
+  border-color: #f3f57e;
+  box-shadow: 0 8px 20px rgba(213, 214, 206, 0.952);
+  transform: translateY(-2px);
+}
+
+.fon-card .card-img-top {
+  width: 100%;
+  max-width: 140px;
+  height: 160px;
+  object-fit: contain;
+  margin: 10px auto;
+  display: block;
+}
+
+.fon-card .card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #16112c;
+  margin: 0;
+}
+
+.row.g-3 {
+  row-gap: 20px !important;
+  margin-top: 20px;
+}
+
+/* ==================== Model grid: fixed height + scroll ==================== */
+#pills-model .row.g-3 {
+  max-height: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+  margin-right: -8px;
+  
+}
+
+#pills-model .row.g-3::-webkit-scrollbar {
+  width: 8px;
+}
+
+#pills-model .row.g-3::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+#pills-model .row.g-3::-webkit-scrollbar-thumb {
+  background: #080529;
+  border-radius: 8px;
+}
+
+#pills-model .row.g-3::-webkit-scrollbar-thumb:hover {
+  background: #09092e;
+}
+
+/* ==================== Storage cards ==================== */
+.row1 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.row1 .col {
+  flex: 0 0 auto;
+  width: auto;
+  margin-bottom:50px;
+  margin-top:50px;
+}
+
+.card.st-card {
+  width: 200px !important;
+  height: 90px !important;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+  background:#f7f6f6;
+  transition: all 0.25s ease-in-out;
+   border: 1.5px solid rgb(233, 233, 120);
+  border-radius: 14px;
+}
+
+.st-card .card-title {
+  color: #07042b;
+  font-weight: 600;
+}
+
+.card.st-card:hover {
+  border-color: #f3f57e;
+ box-shadow: 0 8px 20px rgba(213, 214, 206, 0.952);
+  transform: translateY(-2px);
+  border-radius:2px;
+}
+
+/* ==================== Condition cards ==================== */
+.card.con-card {
+  width: 250px !important;
+  height: 150px !important;
+  text-align: center;
+  cursor: pointer;
+  background:#f7f6f6;
+  transition: all 0.25s ease-in-out;
+   border: 1.5px solid rgb(233, 233, 120);
+  border-radius: 14px;
+}
+
+.con-card .card-title {
+  color: #100a2b;
+}
+
+.con-card .title {
+  color: #3d3d47;
+}
+
+.card.con-card:hover {
+  border-color: #f3f57e;
+  box-shadow: 0 8px 20px rgba(213, 214, 206, 0.952);
+  transform: translateY(-2px);
+}
+
+/* ==================== Accessories checkboxes ==================== */
+.custom-control-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.image-checkbox .custom-control-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.image-checkbox .custom-control-label {
+  display: block;
+  cursor: pointer;
+  margin: 0;
+  width: 200px;
+  height: 120px;
+  padding: 10px 15px;
+  text-align: center;
+  background:#f7f6f6;
+  border-radius: 8px;
+  
+    border: 1.5px solid rgb(233, 233, 120);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+}
+
+.image-checkbox .custom-control-label:hover {
+   border-color: #f3f57e;
+  box-shadow: 0 8px 20px rgba(213, 214, 206, 0.952);
+  transform: translateY(-5px);
+}
+
+.image-checkbox .custom-control-label .h2con {
+  font-size: 20px;
+  margin: 0 0 6px;
+  padding-top: 20px;
+  font-weight: 700;
+  color: #16112c;
+}
+
+.image-checkbox .custom-control-label p {
+  margin: 0;
+  color: #6b6b80;
+  font-size: 18px;
+}
+
+.image-checkbox .custom-control-input:checked + .custom-control-label {
+  border: 1.5px solid #0c062c;
+  background: rgba(104, 94, 241, 0.06);
+  box-shadow: 0 0 12px rgba(178, 177, 228, 0.712);
+}
+
+/* ==================== Final estimated value box ==================== */
+.est-value {
+  border: 1.5px solid rgba(123, 47, 247, 0.15);
+  border-radius: 20px;
+  width: 800px;
+  max-width: 100%;
+  min-height: 400px;
+  padding-bottom: 30px;
+  background:#f7f6f6;
+}
+
+.est-head {
+  color: #16112c;
+}
+
+.est-price {
+  color: #ebb917;
+}
+
+/* ==================== Pickup form success message ==================== */
+.pickup-success {
+  text-align: center;
+  padding: 30px 10px;
+}
+.pickup-success .icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #0a063f, #07083d);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  font-size: 32px;
+}
+.pickup-success h4 {
+  color: #16112c;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.pickup-success p {
+  color: #52525f;
+}
+
+/* ==================== "Back to Estimated Value" muted link style ==================== */
+.btn-muted-back {
+  background: none;
+  border: none;
+  color: #9b97ac;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 0;
+}
+.btn-muted-back:hover {
+  color: #0c0735;
+}
+
+/* ==================== Pickup form ==================== */
+.pickup-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.pickup-form-container .btn-proceed {
+  width: auto;
+  display: block;
+  margin: 15px auto 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.pickup-form-title {
+  color: #16112c;
+}
+.pickup-form-container label {
+  color: #16112c;
+}
+.pickup-form-container .form-control {
+  background: #ffffff;
+  border: 1.5px solid rgba(123, 47, 247, 0.2);
+  color: #16112c;
+}
+.pickup-form-container .form-control::placeholder {
+  color: #9b97ac;
+}
+.pickup-form-container .form-control:focus {
+  background: #ffffff;
+  border-color: #0a0735;
+  color: #16112c;
+  box-shadow: 0 0 0 3px rgba(123, 47, 247, 0.15);
+}
+
+/* ==================== Image drag & drop uploader ==================== */
+.image-drop-zone {
+  border: 2px dashed rgb(13, 9, 66);
+  border-radius: 10px;
+  padding: 30px 15px;
+  cursor: pointer;
+  background: rgba(123, 47, 247, 0.03);
+  text-align: center;
+}
+.image-drop-zone.drag-over {
+  background: rgba(123, 47, 247, 0.08);
+  border-color: #120944;
+}
+.drop-zone-icon {
+  color: #e8fd25;
+}
+.drop-zone-link {
+  color: #110735;
+  text-decoration: underline;
+}
+.image-drop-zone p {
+  color: #6b6b80;
+}
+.image-preview-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.image-preview-item {
+  position: relative;
+}
+.image-preview-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.remove-image-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ==================== Price stepper (Brand/Model/Storage/Condition/Accessories) ==================== */
+.step-item {
+  cursor: pointer;
+}
+
+/* ==================== Pickup form: modal popup ==================== */
+.pickup-modal .modal-dialog {
+  max-width: 650px;
+}
+
+.pickup-modal .modal-content {
+  border-radius: 20px;
+  border: none;
+  background: #ffffff;
+  padding: 30px 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.pickup-modal .modal-body {
+  padding: 0;
+}
+
+.pickup-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+}
+
+.pickup-modal .pickup-form-container {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .pickup-modal .modal-dialog {
+    max-width: 94%;
+    margin: 10px auto;
+  }
+  .pickup-modal .modal-content {
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+}
+
+/* ==================== Mobile responsive ==================== */
+@media (max-width: 767px) {
+
+    /* ---- Fix huge vertical gap between card rows: this was applying full
+       desktop 50px top/bottom margin on every .row1 .col even on mobile.
+       Row spacing is already handled by .row1's own gap, so reset it here. ---- */
+    .row1 .col {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .row1 {
+        row-gap: 12px;
+    }
+
+    /* ---- Model cards: 3 per row, ~2 rows visible then scroll ---- */
+    #pills-model .row.g-3 {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px !important;
+        max-height: 320px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    #pills-model .row.g-3 > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    .card.fon-card {
+        padding: 8px;
+    }
+    .fon-card .card-img-top {
+        max-width: 100%;
+        height: 70px;
+        margin: 5px auto;
+    }
+    .fon-card .card-title {
+        font-size: 11px;
+    }
+
+    /* ---- Shared: .row1 wraps storage / condition / accessories ---- */
+    .row1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* ---- Storage: 3 per row (width set on wrapper, not the card, to avoid circular sizing) ---- */
+    .row1:has(.st-card) > .col,
+    .row1:has(.st-card) > * {
+        flex: 0 0 calc(33.33% - 10px) !important;
+        width: calc(33.33% - 10px) !important;
+        max-width: calc(33.33% - 10px) !important;
+    }
+    .card.st-card {
+        width: 100% !important;
+        height: 60px !important;
+        box-sizing: border-box;
+    }
+    
+    .st-card .card-title {
+        font-size: 10px !important;
+        white-space: nowrap;
+    }
+
+
+    /* ---- Condition: 2 per row ---- */
+   
+    /* ---- Condition: 1 per row ---- */
+    .row1:has(.con-card) > .col,
+    .row1:has(.con-card) > * {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .row1:has(.con-card) {
+        gap: 12px;
+    }
+
+    .card.con-card {
+        width: 100% !important;
+        max-width: 300px; 
+        height: auto !important;
+        padding: 15px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .con-card .card-title {
+        font-size: 14px !important;
+        line-height: 1.2;
+        margin-bottom: 4px;
+    }
+
+    .con-card .title {
+        font-size: 11px !important;
+    }
+
+    /* ---- Accessories: 2 per row ---- */
+    .row1:has(.image-checkbox) > .col,
+    .row1:has(.image-checkbox) > * {
+        flex: 0 0 calc(50% - 10px) !important;
+        width: calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
+    }
+    .image-checkbox .custom-control-label {
+        width: 100% !important;
+        height: 90px;
+        box-sizing: border-box;
+        padding: 8px 10px;
+    }
+    .image-checkbox .custom-control-label .h2con {
+        font-size: 15px;
+        padding-top: 10px;
+    }
+    .image-checkbox .custom-control-label p {
+        font-size: 12.5px;
+    }
+
+    /* ---- "Back to X" / "Get Final Price" buttons + Estimated Value buttons: side by side ---- */
+    .btn-proceed,
+    .btn-pro,
+    .btn-muted-back {
+        font-size: 11px;
+        padding: 10px 16px;
+    }
+
+    
+    
+    .pickup-form-container .btn-proceed {
+        display: block !important;
+        width: fit-content !important;
+        margin: 15px auto 0 auto !important;
+    }
+
+
+
+    .est-value .btn-proceed,
+    .est-value .btn-pro,
+    .est-value .btn-muted-back {
+        display: inline-flex;
+        width: auto;
+        margin: 6px 4px 0;
+        padding: 10px 18px;
+    }
+}

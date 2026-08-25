@@ -1,0 +1,131 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    /* Prevent horizontal scrollbar / page-width "float" caused by absolutely
+       positioned decorative elements (phone images, side visuals, etc.)
+       that bleed slightly past the viewport edge in some sections. */
+    overflow-x: hidden;
+    width: 100%;
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Navbar - static positioned bar at the top of the page */
+
+.custom-navbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+/* Nav links */
+.custom-navbar .nav-link {
+    color: #191258 !important;
+    font-weight: 700;
+    font-size: 16px;
+    position: relative;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #181149 !important;
+    border-radius: 6px;
+    background-color: #dad9ca;
+}
+
+/* Active link */
+.custom-navbar .nav-link.active {
+    color: #0a0e42 !important;
+    border-radius: 6px;
+    background-color: #d1cde0;
+}
+
+.custom-navbar.nav-scrolled {
+    padding: 6px 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+/* WhatsApp CTA */
+.whatsapp-cta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.whatsapp-cta i {
+    font-size: 24px;
+    color: #25D366; /* WhatsApp green */
+}
+
+.whatsapp-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.whatsapp-text strong {
+    color: #0a0e42;
+    font-size: 14px;
+}
+
+.whatsapp-text small {
+    color: #0a0e42;
+    font-size: 12px;
+}
+
+/* Mobile toggler icon color fix */
+.custom-navbar .navbar-toggler {
+    border-color: rgba(255,255,255,0.5);
+}
+
+.custom-navbar .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* Responsive spacing on small screens */
+@media (max-width: 991px) {
+    .custom-navbar {
+        padding: 10px 20px;
+    }
+    .whatsapp-cta {
+        margin: 15px 0 0 0;
+    }
+
+    /* Shrink the logo on smaller screens */
+    .custom-navbar .navbar-brand img {
+        width: 130px;
+        height: auto;
+    }
+
+    
+    .custom-navbar .navbar-collapse {
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        right: 0;
+        background-color: #ffffff;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+    }
+  
+
+ 
+}
+
+
+
+@media (max-width: 575px) {
+    .custom-navbar .navbar-brand img {
+        width: 110px;
+        height: auto;
+    }
+}

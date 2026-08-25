@@ -1,0 +1,100 @@
+.story-section{
+    background-color: #f1eef8;
+}
+
+/*MISSION VISION*/
+.card-body h5,p{
+    color:rgb(66, 18, 66);
+     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+.a-card{
+    transition:transform 0.2s ease;
+}
+.a-card:hover{
+    transform:translateY(-10px)
+}
+.mission-card{
+    border-radius:20px;
+    border:1px solid #d9dee7 !important;
+    padding:30px 10px;
+    transition:.3s;
+    background-color: #f1eded;
+    border-top:5px solid #4B136B !important;  
+
+}
+
+.mission-card .vision-card .value-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15)!important;
+}
+
+.icon-box{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    margin-top:-20px;
+    margin-bottom:25px;
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.mission-bg{
+    background:#4B136B;
+}
+
+.vision-bg{
+    background:#8B5CF6;
+}
+
+.values-bg{
+    background:#10B981;
+}
+
+.card-title,
+h3{
+    color:#22004d;
+}
+
+.card-text{
+    font-size:18px;
+    line-height:1.8;
+}
+
+.vision-card{
+     border-radius:20px;
+    border:1px solid #d9dee7 !important;
+    padding:30px 10px;
+    transition:.3s;
+    background-color: #f1eded;
+    border-top:5px solid #8B5CF6 !important;   
+   
+}
+.value-card{
+    border-radius:20px;
+    border:1px solid #d9dee7 !important;
+    padding:30px 10px;
+    transition:.3s;
+    background-color: #f1eded;
+    border-top:5px solid #10B981 !important;  
+    
+}
+/*ABOUT-PROCESS*/
+.about-process{
+    background-color:#f1eef8 ;
+}
+.step-bg{
+    background: #290931;
+    color:#d9dee7
+}
+.abt-card{
+    border:1px solid rgb(212, 209, 209) !important;
+    border-radius: 20px;
+    transition: 0.2s ease;
+}
+.abt-card:hover{
+    transform: translateY(-10px);
+    border: 2px solid rgb(51, 8, 51) !important;
+}

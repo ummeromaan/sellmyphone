@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteBase /sellmyphone/
+
+# Blog single post: /blog/some-post-slug  ->  blog-single.php?slug=some-post-slug
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^blog/([a-zA-Z0-9-]+)/?$ blog-single.php?slug=$1 [L,QSA]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/sellmyphone/([^.\s]+)\.php[\s?] [NC]
+RewriteRule ^ /sellmyphone/%1 [R=301,L]
+
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]

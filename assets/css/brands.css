@@ -1,0 +1,795 @@
+/* ==================== Brand section / Instant Price Calculator widget (light theme) ==================== */
+
+.brand-section {
+    background-color: #ffffff;
+
+}
+
+.calc-widget {
+    margin-top: 80px;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(180deg, #fafafa 0%, #f9fae6 100%);
+    border: 1.5px solid  rgba(212, 175, 55, 0.35);
+    border-radius: 24px;
+    padding-top:5px;
+    padding-bottom:30px;
+
+    box-shadow: 0 20px 60px rgba(80, 40, 150, 0.08);
+    margin-bottom:50px;
+    
+}
+
+/* ---------- Small dashed gradient tag (used for "INSTANT PRICE CALCULATOR" & "CHOOSE YOUR BRAND") ---------- */
+.mini-tag-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+   
+   margin-left: auto; 
+   margin-right: auto;
+   width:fit-content;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    
+}
+
+.mini-tag-text {
+    color: #16112c;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+/* ---------- Heading / subtitle ---------- */
+.calc-title {
+    color: #16112c;
+    font-size: 40px;
+    margin-top: 14px;
+}
+
+.calc-title .highlight {
+    color:#ebb917;
+}
+
+.calc-subtitle {
+    color: #3f3f4d;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 14px auto 0;
+}
+
+/* ---------- Step progress bar ---------- */
+.price-stepper {
+    display: flex;
+    align-items: flex-start;
+    margin: 30px 0 30px;
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    width: 110px;
+}
+
+.step-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    border-radius: 50%;
+    border: 2px solid #dcd9ea;
+    color: #151516;
+    font-weight: 700;
+    font-size: 20px;
+    background: #ffffff;
+    transition: all 0.25s ease;
+}
+
+.step-label {
+    color: #110c27;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-top: 4px;
+}
+
+.step-sublabel {
+    color: #9b97ac;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.step-line {
+    flex: 1;
+    min-width: 20px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    margin: 27px 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-line i {
+    background: #f6f4fc;
+    color: #b3aec6;
+    font-size: 11px;
+    padding: 0 5px;
+}
+
+/* Current active step */
+.step-item.active .step-circle {
+    background: #030927;
+    border-color: transparent;
+    color:#ebb917;
+    box-shadow: 0 0 0 4px rgba(123, 47, 247, 0.15), 0 0 0 8px rgba(33, 212, 253, 0.08), 0 0 22px rgba(123, 47, 247, 0.45);
+}
+
+/* Connecting line lights up right after an active/done step */
+.step-item.active + .step-line,
+.step-item.done + .step-line {
+    background: linear-gradient(90deg, #070f57,#ebb917);
+}
+
+/* ---------- Brand cards (Apple / Samsung) - styled like the reference screenshot ---------- */
+.brand-card {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background: #f1f0f0 !important;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 18px;
+    padding: 1px;
+    min-height: 170px;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    transition: all 0.25s ease-in-out;
+    margin-bottom: 40px;
+}
+
+.brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(80, 40, 150, 0.15);
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+/* Visual area: holds the phone photo. Fixed height + overflow:hidden crops
+   the bottom of the phone photo, so the phone stays anchored to the top. */
+.brand-card-visual {
+    position: relative;
+    flex: 0 0 34%;
+    align-self: stretch;
+    height: auto;
+    width: 130px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Soft glow ring behind the phone - dark navy centre fading to gold edge,
+   matching the reference screenshot */
+.brand-card-visual::before {
+    content: "";
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, #0a0820 0%, #0a0820 55%, rgba(247, 200, 47, 0.55) 100%);
+    box-shadow: 0 0 30px 4px rgba(247, 200, 47, 0.3);
+    z-index: 0;
+}
+
+/* Phone photo anchored to the TOP; the extra height below overflows
+   and gets automatically clipped by .brand-card-visual's overflow:hidden,
+   so the phone is cropped away from the bottom. */
+.brand-phone-img {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 170%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: top;
+    z-index: 1;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+}
+
+/* Vertical divider between the phone visual and the text info */
+.brand-card-divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(0, 0, 0, 0.08);
+    margin: 10px 0;
+}
+
+.brand-card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+/* Badge icon + "iPhone"/"Samsung" + sub-name (Apple/Galaxy) sit together:
+   badge on the left, title and sub-name stacked on the right */
+.brand-title-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.brand-title-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    min-width: 0;
+}
+
+/* Dark rounded-square badge, like the reference image */
+.brand-badge {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    border: none;
+    background-color: #0a0820;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-badge img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.brand-badge .img1 {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.brand-title-name {
+    color: #16112c;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.brand-sub-name {
+    color:#ebb917;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.brand-desc {
+    color: #6b6b80;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 6px 0 14px;
+}
+
+.brand-arrow-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#ebb917;
+    transition: all 0.2s ease;
+}
+
+.brand-arrow-btn i {
+    font-size: 13px;
+}
+
+.brand-card:hover .brand-arrow-btn {
+    background:#ebb917;
+    border-color: transparent;
+    color: #0a0820;
+    transform: translateX(3px);
+}
+
+/* ---------- Side phone images flanking the header ---------- */
+.brand-hero-wrap {
+    position: relative;
+}
+
+.brand-header {
+    position: relative;
+    z-index: 1;
+}
+
+/* Positioned behind the header; the card below (later in the DOM, opaque bg,
+   higher z-index) covers a small part of their bottom so they sit naturally
+   above the card, matching the reference image proportions. */
+.brand-side-phone {
+    position: absolute;
+    top: -50px;
+    height: 400px;
+    width: auto;
+    max-width: 39%;
+    object-fit: contain;
+    z-index: 0;
+}
+
+.brand-side-phone-left {
+    left: -120px;
+}
+
+.brand-side-phone-right {
+    right: -20px;
+}
+
+/* ---------- Trust features strip (Best Market Prices / Free Pickup / Instant Payment / Secure) ---------- */
+.brand-features-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    margin-top: 20px;
+    padding: 40px 30px;
+    background-color: #0a0820;
+    
+  
+}
+
+.brand-feature-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 24px;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.brand-feature-item:first-child {
+    border-left: none;
+}
+
+.brand-feature-icon {
+    color: #ebb917;
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+
+.brand-feature-title {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 10px;
+   
+}
+
+.brand-feature-divider {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background:#ebb917;
+    margin-bottom: 14px;
+}
+
+.brand-feature-desc {
+    color: #b9b3d6;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 190px;
+}
+
+/* ---------- Model/Storage/Condition/Accessories content stays inside this same widget ---------- */
+#brand-content:not(:empty) {
+    margin-top: 25px;
+}
+
+.calc-widget .text-muted {
+    color: #6b6b80 !important;
+}
+
+/* ==================== Responsive ====================*/
+  
+
+@media (max-width: 991px) {
+    .brand-section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .calc-widget {
+        margin-top: 40px;
+        padding: 25px 15px;
+    }
+
+    .calc-title {
+        font-size: 26px;
+    }
+
+    .calc-subtitle {
+        font-size: 14px;
+    }
+
+   
+    .price-stepper {
+        flex-wrap: nowrap;
+        margin: 25px 0 30px;
+    }
+
+    .step-item {
+        width: auto;
+        gap: 3px;
+    }
+
+    .step-circle {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        font-size: 14px;
+        border-width: 1.5px;
+    }
+
+    .step-label {
+        font-size: 10px;
+    }
+
+    .step-sublabel {
+        display: none;
+    }
+
+    .step-line {
+        margin: 17px 2px 0;
+        min-width: 6px;
+    }
+
+    .step-line i {
+        font-size: 8px;
+        padding: 0 2px;
+    }
+
+    .brand-side-phone {
+        display: none;
+    }
+
+    .brand-features-bar {
+        flex-wrap: nowrap;
+        padding: 20px 8px;
+    }
+
+    .brand-feature-item {
+        padding: 0 6px;
+    }
+
+    .brand-feature-icon {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .brand-feature-title {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+
+    .brand-feature-divider {
+        width: 20px;
+        margin-bottom: 8px;
+    }
+
+    .brand-feature-desc {
+        font-size: 10px;
+        line-height: 1.35;
+    }
+
+    .brand-card {
+        max-width: 100%;
+        min-height: 150px;
+        padding: 12px;
+    }
+
+    .brand-card-visual {
+        width: 100px;
+        flex: 0 0 100px;
+    }
+    .brand-phone-img {
+        top: 5px;
+        height: 160%;
+    }
+
+    .brand-badge {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        border-radius: 10px;
+    }
+
+    .brand-badge img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .brand-title-name {
+        font-size: 17px;
+    }
+
+    .brand-sub-name {
+        font-size: 12px;
+    }
+
+    .brand-desc {
+        font-size: 12px;
+        margin: 5px 0 10px;
+    }
+
+    .brand-arrow-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* ---- Trim the excess top/bottom margins around the widget on mobile ---- */
+    .brand-section {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .calc-widget {
+        margin-top: 15px;
+        margin-bottom: 20px;
+        padding: 16px 10px;
+   
+    }
+
+
+    .calc-title {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .calc-title .highlight {
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+
+    .brand-card {
+        margin-bottom: 16px;
+    }
+
+    /* ---- Features bar: 2 per row instead of 4 squeezed into one row,
+       vertical spacing (outer margin/padding + inner icon/title/divider
+       gaps) trimmed down, and stretched full-bleed edge-to-edge so it isn't
+       sitting with empty space on either side (it was inheriting the
+       .container-fluid side padding, which left it narrower than the screen) ---- */
+    .brand-features-bar {
+        flex-wrap: wrap;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        margin-top: 6px;
+        padding: 16px 10px;
+        row-gap: 18px;
+        column-gap: 0;
+        border-radius: 0;
+    }
+
+    .brand-feature-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 8px;
+        border-left: none;
+    }
+
+    /* divider only between the two columns, not above every row */
+    .brand-feature-item:nth-child(even) {
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .brand-feature-icon {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .brand-feature-title {
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+
+    .brand-feature-divider {
+        width: 18px;
+        margin-bottom: 6px;
+    }
+
+    .brand-feature-desc {
+        font-size: 9px;
+        line-height: 1.3;
+        max-width: 140px;
+        margin: 0 auto;
+    }
+
+    .brand-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 8px;
+        min-height: 190px;
+        padding: 10px;
+    }
+
+    .brand-card-visual {
+        flex: 0 0 90px;
+        width: 90px;
+    }
+
+    .brand-card-visual::before {
+        width: 75px;
+        height: 75px;
+    }
+
+    .brand-phone-img {
+        top: 15px;
+        height: 160%;
+    }
+
+    .brand-card-divider {
+        margin: 6px 0;
+    }
+
+    .brand-title-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .brand-badge {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        border-radius: 9px;
+    }
+
+    .brand-badge img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .brand-title-name {
+        font-size: 15px;
+    }
+
+    .brand-sub-name {
+        font-size: 10px;
+    }
+
+    .brand-desc {
+        font-size: 10px;
+        line-height: 1.4;
+        margin: 4px 0 8px;
+    }
+
+    .brand-arrow-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .brand-arrow-btn i {
+        font-size: 10px;
+    }
+
+    .step-circle {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        font-size: 12px;
+    }
+
+    .step-label {
+        font-size: 9px;
+    }
+}
+
+/*for Very small phones*/
+@media (max-width: 420px) {
+    .brand-card {
+        min-height: 170px;
+        padding: 8px;
+        gap: 6px;
+    }
+
+    .brand-card-visual {
+        flex: 0 0 70px;
+        width: 70px;
+    }
+
+    .brand-card-visual::before {
+        width: 60px;
+        height: 60px;
+    }
+
+    .brand-phone-img {
+        top: 30px;
+        height: 150%;
+    }
+
+    .brand-title-row {
+        gap: 6px;
+        margin-bottom: 4px;
+    }
+
+    .brand-badge {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        border-radius: 8px;
+    }
+
+    .brand-badge img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .brand-title-name {
+        font-size: 13px;
+    }
+
+    .brand-sub-name {
+        font-size: 9px;
+    }
+
+    .brand-desc {
+        font-size: 9px;
+        margin: 3px 0 6px;
+    }
+
+    .brand-arrow-btn {
+        width: 24px;
+        height: 24px;
+    }
+
+    .brand-arrow-btn i {
+        font-size: 9px;
+    }
+
+    .step-circle {
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+        font-size: 11px;
+    }
+
+    .step-label {
+        font-size: 8px;
+    }
+
+    .step-line {
+        min-width: 4px;
+        margin: 15px 1px 0;
+    }
+}
