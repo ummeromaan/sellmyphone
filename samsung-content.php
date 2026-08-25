@@ -211,9 +211,12 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
   <h5 class="est-head text-center fw-bold fs-2 mt-3">Upto </h5>
   <h1 class="est-price fw-bold mt-4" id="final-price">AED 0</h1>
   <p class="text-muted fw-bold mt-4" id="final-summary">Based on: -</p>
-
+<p class="text-center text-danger mt-3 mb-3" id="sell-now-note">
+   Note: Actual payout is confirmed only after our expert evaluates your device.
+</p>
     <div class="text-center mt-5 display-flex flex-direction-row g-3">
-     <button type="button" class="btn-proceed" onclick="">
+     <button type="button" class="btn-proceed" onclick="window.open('https://wa.me/971502166562', '_blank')">
+      
         <i class="fa-brands fa-whatsapp fs-3"></i>Sell on Whatsapp
     </button>
     <button type="button" class="btn-proceed" id="bookPickupBtn" onclick="showPickupForm()">
