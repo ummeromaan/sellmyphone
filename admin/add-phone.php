@@ -20,6 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_POST['add_phone'])) {
 $brand       = mysqli_real_escape_string($conn, trim($_POST['brand']));
 $phone_model = mysqli_real_escape_string($conn, trim($_POST['phone_model']));
 
+$brand       = mysqli_real_escape_string($conn, trim($_POST['brand']));
+$phone_model = mysqli_real_escape_string($conn, trim($_POST['phone_model']));
+
+$existing_check = mysqli_query($conn, "SELECT phone_model FROM phones WHERE brand='$brand' AND LOWER(phone_model)=LOWER('$phone_model') LIMIT 1");
+if ($existing_row = mysqli_fetch_assoc($existing_check)) {
+    $phone_model = mysqli_real_escape_string($conn, $existing_row['phone_model']);
+}
+
 // ----------1 IMAGE UPLAODED FOR ALL STORAGE ROWS----------
 $image_name = null;
 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -32,12 +40,13 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
 }
 $image_sql = $image_name ? "'$image_name'" : "NULL";
 
-// ---------- 4 fixed storage options,----------
+// ---------- 5 fixed storage options,----------
 $storage_options = [
     '128GB' => '128',
     '256GB' => '256',
     '512GB' => '512',
     '1TB'   => '1tb',
+    '2TB'   => '2tb',
 ];
 
 $inserted_count = 0;

@@ -373,12 +373,21 @@ window.addEventListener('pageshow', function(event) {
             </div>
           </div>
 
-          <div class="border rounded p-3 mb-3">
+          <div class="border rounded p-3 mb-2">
             <label class="form-label fw-bold">1TB</label>
             <div class="row g-2">
               <div class="col-4"><label class="form-label">Flawless</label><input type="number" step="0.01" class="form-control" name="flawless_1tb"></div>
               <div class="col-4"><label class="form-label">Good</label><input type="number" step="0.01" class="form-control" name="good_1tb"></div>
               <div class="col-4"><label class="form-label">Fair</label><input type="number" step="0.01" class="form-control" name="fair_1tb"></div>
+            </div>
+          </div>
+
+          <div class="border rounded p-3 mb-3">
+            <label class="form-label fw-bold">2TB</label>
+            <div class="row g-2">
+              <div class="col-4"><label class="form-label">Flawless</label><input type="number" step="0.01" class="form-control" name="flawless_2tb"></div>
+              <div class="col-4"><label class="form-label">Good</label><input type="number" step="0.01" class="form-control" name="good_2tb"></div>
+              <div class="col-4"><label class="form-label">Fair</label><input type="number" step="0.01" class="form-control" name="fair_2tb"></div>
             </div>
           </div>
 
