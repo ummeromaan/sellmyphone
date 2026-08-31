@@ -9,38 +9,38 @@
 
 <ul>
 
-<li><a href="dashboard.php" class="<?php echo $current == 'dashboard.php' ? 'active' : ''; ?>"><i class="fa-solid fa-house  mx-2 fs-4"></i> Dashboard</a></li>
+<li><a href="dashboard.php" class="<?php echo $current == 'dashboard.php' ? 'active' : ''; ?>"><i class="fa-solid fa-house  mx-2"></i> Dashboard</a></li>
 
 <li>
-<a href="phones.php" class="<?php echo $current == 'phones.php' ? 'active' : ''; ?>"><i class="fa-solid fa-mobile-screen mx-2 fs-4"></i>
+<a href="phones.php" class="<?php echo $current == 'phones.php' ? 'active' : ''; ?>"><i class="fa-solid fa-mobile-screen mx-2"></i>
 Models & Pricing
 </a>
 </li>
 
 <li>
 <a href="orders.php" class="<?php echo $current == 'orders.php' ? 'active' : ''; ?>">
-<i class="fa-solid fa-cart-shopping mx-2 fs-4"></i>
+<i class="fa-solid fa-cart-shopping mx-2"></i>
 Orders
 </a>
 </li>
 
 <li>
 <a href="messages.php" class="<?php echo $current == 'messages.php' ? 'active' : ''; ?>">
-<i class="fa-solid fa-envelope mx-2 fs-4"></i>
+<i class="fa-solid fa-envelope mx-2"></i>
 Messages
 </a>
 </li>
 
 <li>
 <a href="settings.php" class="<?php echo $current == 'settings.php' ? 'active' : ''; ?>">
-<i class="fa-solid fa-gear mx-2 fs-4"></i>
+<i class="fa-solid fa-gear mx-2"></i>
 Settings
 </a>
 </li>
 
 <li>
 <a href="add-admin.php" class="<?php echo $current == 'add-admin.php' ? 'active' : ''; ?>">
-<i class="fa-solid fa-users mx-2 fs-4"></i>
+<i class="fa-solid fa-users mx-2"></i>
 Add/Manage Admins
 </a>
 </li>
@@ -54,7 +54,7 @@ $content_open  = in_array($current, $content_pages);
 <li>
 <a href="#contentMenu" class="d-flex justify-content-between align-items-center <?php echo $content_open ? '' : 'collapsed'; ?>"
    data-bs-toggle="collapse" role="button" aria-expanded="<?php echo $content_open ? 'true' : 'false'; ?>">
-<span><i class="fa-solid fa-file-pen mx-2 fs-4"></i>Content</span>
+<span><i class="fa-solid fa-file-pen mx-2"></i>Content</span>
 <i class="fa-solid fa-chevron-down submenu-caret"></i>
 </a>
 <div class="collapse <?php echo $content_open ? 'show' : ''; ?>" id="contentMenu">
@@ -68,19 +68,19 @@ $content_open  = in_array($current, $content_pages);
 </li>
 
 <li>
-<a href="seo-settings.php" class="<?php echo $current == 'seo-settings.php' ? 'active' : ''; ?>"><i class="fa-solid fa-magnifying-glass mx-2 fs-4"></i>
+<a href="seo-settings.php" class="<?php echo $current == 'seo-settings.php' ? 'active' : ''; ?>"><i class="fa-solid fa-magnifying-glass mx-2"></i>
 SEO Settings
 </a>
 </li>
 <li>
-<a href="blog-posts.php" class="<?php echo $current == 'blog-posts.php' ? 'active' : ''; ?>"><i class="fa-solid fa-file-pen mx-2 fs-4"></i>
+<a href="blog-posts.php" class="<?php echo $current == 'blog-posts.php' ? 'active' : ''; ?>"><i class="fa-solid fa-file-pen mx-2"></i>
 Blogs
 </a>
 </li>
 <hr class="w-100">
 <li>
 <a href="logout.php" class="<?php echo $current == 'logout.php' ? 'active' : ''; ?>">
-<i class="fa-solid fa-right-from-bracket mx-2 fs-4"></i>
+<i class="fa-solid fa-right-from-bracket mx-2"></i>
 Logout
 </a>
 </li>
