@@ -13,6 +13,7 @@
     <!--cards-->
 
     <div class="about-cards d-flex align-items-center justify-content-center gap-3">
+      
      <div class="card a-card rounded-4 shadow">
       <div class="card-body text-center p-2 mt-4 mb-4">
         <h5 class="card-title fw-bold fs-2">15,000+</h5>

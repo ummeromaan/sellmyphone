@@ -2,6 +2,15 @@
 require_once 'admin/includes/db.php';
 /**@var mysqli $conn */
 
+
+// Standalone content file (loaded via AJAX or opened directly) — header.php
+// isn't included here, so BASE_URL wouldn't be defined otherwise.
+if (!defined('BASE_URL')) {
+    $base_path = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+    $base_path = rtrim($base_path, '/');
+    define('BASE_URL', $base_path === '' ? '/' : $base_path . '/');
+}
+
 $brand = 'Samsung';
 $brand_esc = mysqli_real_escape_string($conn, $brand);
 
@@ -58,8 +67,6 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 <li class="nav-item d-none" id="final-tab-item">
     <button class="nav-link"
             id="disabled-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#disabled-tab-pane"
             type="button">
 
     </button>
@@ -70,28 +77,43 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 
   <!-- ==================== MODEL TAB (from DB) ==================== -->
   <div class="tab-pane fade show active" id="pills-model" role="tabpanel" aria-labelledby="pills-model-tab">
+<div class="mini-tag-wrap">
+                    <span class="mini-tag-line"></span>
+                    <span class="mini-tag-text">CHOOSE YOUR MODEL</span>
+                    <span class="mini-tag-line"></span>
+                </div>
 
 <div class="row row-cols-1 row-cols-md-4 g-3">
   <?php foreach ($phoneData as $model_name => $data): ?>
   <div class="col">
     <div class="card fon-card" data-model="<?php echo htmlspecialchars($model_name); ?>">
-      <div><img src="assets/images/<?php echo htmlspecialchars($data['image'] ?? ''); ?>" class="card-img-top" alt="..."></div>
+      <div><img src="<?php echo BASE_URL; ?>assets/images/<?php echo htmlspecialchars($data['image'] ?? ''); ?>" class="card-img-top" alt="..."></div>
       <div class="card-body">
-        <h5 class="card-title"><?php echo htmlspecialchars($model_name); ?></h5>
+        <h3 class="card-title"><?php echo htmlspecialchars($model_name); ?></h3>
       </div>
     </div>
   </div>
   <?php endforeach; ?>
 </div><!--cards-->
 
-<div class="text-center mt-4">
+<?php if (empty($standalone_page)): ?>
+<div class="text-center mt-4 mb-4">
      <button type="button" class="btn-proceed" onclick="backToBrands()">
         <i class="fa-solid fa-arrow-left"></i> Back to brands
-    </button></div>
-  </div>
+    </button>
+</div>
+<?php else: ?>
+<div class="mb-4"></div>
+<?php endif; ?>
+  </div><!--pills-model tab-pane-->
 
   <!-- ==================== STORAGE TAB (filled through js after model is selected) ==================== -->
   <div class="tab-pane fade" id="pills-storage" role="tabpanel" aria-labelledby="pills-storage-tab">
+<div class="mini-tag-wrap">
+                    <span class="mini-tag-line"></span>
+                    <span class="mini-tag-text">CHOOSE STORAGE</span>
+                    <span class="mini-tag-line"></span>
+                </div>
 
   <div class="row row-cols-1 row-cols-md-4 row1 mt-4" id="storage-cards-container">
     <!--JS storage card appear here -->
@@ -108,6 +130,11 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 
   <!-- ==================== CONDITION TAB (labels same,add data-condition) ==================== -->
    <div class="tab-pane fade" id="pills-condition" role="tabpanel" aria-labelledby="pills-condition-tab">
+<div class="mini-tag-wrap">
+                    <span class="mini-tag-line"></span>
+                    <span class="mini-tag-text">CHOOSE CONDITION</span>
+                    <span class="mini-tag-line"></span>
+                </div>
 
    <div class="row row-cols-1 row-cols-md-4 row1 mt-4">
   <div class="col">
@@ -146,6 +173,11 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 
   <!-- ==================== ACCESSORIES TAB (prices are filled according to model through JS) ==================== -->
    <div class="tab-pane fade" id="pills-accessories" role="tabpanel" aria-labelledby="pills-accessories-tab">
+<div class="mini-tag-wrap">
+                    <span class="mini-tag-line"></span>
+                    <span class="mini-tag-text">SELECT ACCESSORIES</span>
+                    <span class="mini-tag-line"></span>
+                </div>
 
    <div class="row row-cols-1 row-cols-md-4 row1 mt-4 g-2">
 
@@ -153,7 +185,7 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 <div class="custom-control custom-checkbox image-checkbox">
 <input type="checkbox" class="custom-control-input accessory-check" id="ck1" data-key="charger">
 <label class="custom-control-label" for="ck1">
-<h2 class="h2con">Charger</h2>
+<h3 class="h3con">Charger</h3>
 <p class="title">+ AED <span id="price-charger">0</span></p>
 </label>
 </div>
@@ -163,7 +195,7 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 <div class="custom-control custom-checkbox image-checkbox">
 <input type="checkbox" class="custom-control-input accessory-check" id="ck2" data-key="earphones">
 <label class="custom-control-label" for="ck2">
-<h2 class="h2con">EarPhones</h2>
+<h3 class="h3con">EarPhones</h3>
 <p>+ AED <span id="price-earphones">0</span></p>
 </label>
 </div>
@@ -172,7 +204,7 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 <div class="custom-control custom-checkbox image-checkbox">
 <input type="checkbox" class="custom-control-input accessory-check" id="ck3" data-key="box">
 <label class="custom-control-label" for="ck3">
-<h2 class="h2con">Box</h2>
+<h3 class="h3con">Box</h3>
 <p>+ AED <span id="price-box">0</span></p>
 </label>
 </div>
@@ -181,7 +213,7 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 <div class="custom-control custom-checkbox image-checkbox">
 <input type="checkbox" class="custom-control-input accessory-check" id="ck4" data-key="bill">
 <label class="custom-control-label" for="ck4">
-<h2 class="h2con">Valid Bill</h2>
+<h3 class="h3con">Valid Bill</h3>
 <p>+ AED <span id="price-bill">0</span></p>
 </label>
 </div>
@@ -209,7 +241,7 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
   <div id="estimated-value-content">
   <h5 class="est-head text-center mt-5">Your Estimated Value </h5>
   <h5 class="est-head text-center fw-bold fs-2 mt-3">Upto </h5>
-  <h1 class="est-price fw-bold mt-4" id="final-price">AED 0</h1>
+  <h4 class="est-price fw-bold mt-4" id="final-price">AED 0</h4>
   <p class="text-muted fw-bold mt-4" id="final-summary">Based on: -</p>
 <p class="text-center text-danger mt-3 mb-3" id="sell-now-note">
    Note: Actual payout is confirmed only after our expert evaluates your device.
@@ -225,10 +257,13 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
     </button>
 </div>
 
-      <div class="text-center mt-4">
+<?php if (empty($standalone_page)): ?>
+            <div class="text-center mt-4 mb-2">
      <button type="button" class="btn-pro" onclick="backToBrands()">
         <i class="fa-solid fa-arrow-left"></i> Back to brands
-    </button></div>
+    </button>
+    </div>
+<?php endif; ?>
   </div><!--estimated-value-content-->
 
             </div>

@@ -41,12 +41,12 @@ $blog_count = mysqli_num_rows($blogs);
     <div class="container">
         <div class="blog-grid">
             <?php while ($post = mysqli_fetch_assoc($blogs)): ?>
-           <a href="blog/<?php echo urlencode($post['slug']); ?>" class="blog-card">
+           <a href="<?php echo BASE_URL; ?>blog/<?php echo urlencode($post['slug']); ?>" class="blog-card">
                 <div class="blog-card-img-wrap">
                     <?php if (!empty($post['thumbnail'])): ?>
-                    <img src="assets/images/<?php echo htmlspecialchars($post['thumbnail']); ?>" alt="<?php echo htmlspecialchars($post['title']); ?>">
+                    <img src="<?php echo BASE_URL; ?>assets/images/<?php echo htmlspecialchars($post['thumbnail']); ?>" alt="<?php echo htmlspecialchars($post['title']); ?>">
                     <?php else: ?>
-                    <img src="assets/images/blog-placeholder.jpg" alt="<?php echo htmlspecialchars($post['title']); ?>">
+                    <img src="<?php echo BASE_URL; ?>assets/images/blog-placeholder.jpg" alt="<?php echo htmlspecialchars($post['title']); ?>">
                     <?php endif; ?>
                     <div class="blog-card-overlay">
                         <span><?php echo htmlspecialchars($post['title']); ?></span>

@@ -42,7 +42,7 @@ if (empty($tsn_pages)) { $tsn_pages = [[]]; }
                             <div class="tsn-author">
                                 <span class="tsn-avatar"><?php echo htmlspecialchars($t['avatar_letter']); ?></span>
                                 <div class="tsn-author-info">
-                                    <h4><?php echo $t['author_name']; ?></h4>
+                                    <p><?php echo $t['author_name']; ?></p>
                                     <span><?php echo $t['author_location']; ?></span>
                                 </div>
                             </div>

@@ -1,10 +1,13 @@
 .story-section{
-    background-color: #f1eef8;
+    background-color: #fcfcfd;
 }
 
+.story-tag{
+    color: #060d31;
+}
 /*MISSION VISION*/
 .card-body h5,p{
-    color:rgb(66, 18, 66);
+    color:rgb(13, 8, 41);
      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 .a-card{
@@ -19,7 +22,7 @@
     padding:30px 10px;
     transition:.3s;
     background-color: #f1eded;
-    border-top:5px solid #4B136B !important;  
+    border-top:5px solid #0e093a !important;  
 
 }
 
@@ -42,7 +45,7 @@
 }
 
 .mission-bg{
-    background:#4B136B;
+    background:#090529;
 }
 
 .vision-bg{
@@ -55,7 +58,7 @@
 
 .card-title,
 h3{
-    color:#22004d;
+    color:#060d31;
 }
 
 .card-text{
@@ -85,8 +88,11 @@ h3{
 .about-process{
     background-color:#f1eef8 ;
 }
+.about-tag{
+    color:#060d31;
+}
 .step-bg{
-    background: #290931;
+    background: #070a2c;
     color:#d9dee7
 }
 .abt-card{
@@ -96,5 +102,81 @@ h3{
 }
 .abt-card:hover{
     transform: translateY(-10px);
-    border: 2px solid rgb(51, 8, 51) !important;
+    border: 2px solid rgb(7, 5, 37) !important;
+}
+.abt-wcu-tag {
+    color: #060d31;
+}
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 767px) {
+
+    /* Story section */
+    .story-section {
+        padding: 20px 15px;
+    }
+
+    /* Mission / Vision / Values cards */
+    .mission-card,
+    .vision-card,
+    .value-card {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 25px 15px;
+    }
+
+    /* Card content */
+    .card-text {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .card-body h5 {
+        font-size: 20px;
+    }
+
+    /* Icon */
+    .icon-box {
+        width: 65px;
+        height: 65px;
+        font-size: 26px;
+        margin-top: -10px;
+        margin-bottom: 19px;
+    }
+
+    /* About process */
+    .about-process {
+        padding: 50px 15px;
+    }
+
+    .abt-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Step number/icon */
+    .step-bg {
+        font-size: 14px;
+    }
+}
+/* About Cards */
+.about-cards {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .about-cards {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px !important;
+    }
+
+    .about-cards .a-card {
+        width: 100%;
+        max-width: 280px;
+    }
 }

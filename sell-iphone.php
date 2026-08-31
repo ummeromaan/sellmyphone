@@ -1,0 +1,17 @@
+<?php
+$page_title = "Sell Your iPhone in UAE | Instant Cash Offer - SellMyPhone";
+$meta_description = "Sell your iPhone for the best price in UAE. Get instant valuation for iPhone 15, 14, 13 and more, with free pickup and same-day payment.";
+$meta_keywords = "sell iPhone UAE, sell iPhone Dubai, iPhone buyback, iPhone cash offer";
+?>
+
+<?php require 'includes/header.php'; ?>
+<?php require 'sections/iphone/hero.php'; ?>
+<?php require 'sections/iphone/s-brand.php'; ?>
+<?php require 'sections/iphone/process.php'; ?>
+<?php require 'sections/iphone/series.php'; ?>
+<?php require 'sections/iphone/s-policy.php'; ?>
+<?php require 'sections/iphone/comparison.php'; ?>
+<?php require 'sections/iphone/location.php'; ?>
+<?php require 'sections/iphone/faq.php'; ?>
+<?php require 'sections/iphone/cta.php'; ?>
+<?php require 'includes/footer.php'; ?>

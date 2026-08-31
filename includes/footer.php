@@ -40,7 +40,7 @@ z-index: 2147483647;">
 
             <!-- Logo + tagline + social icons -->
             <div class="footer-brand">
-                <h3 class="footer-logo"><?php echo htmlspecialchars($f_brand_name); ?> <span><?php echo htmlspecialchars($f_brand_highlight); ?></span></h3>
+                <div class="footer-logo"><?php echo htmlspecialchars($f_brand_name); ?> <span><?php echo htmlspecialchars($f_brand_highlight); ?></span></div>
                 <p class="footer-tagline"><?php echo htmlspecialchars($f_tagline); ?></p>
                 <div class="footer-social">
                     <a href="<?php echo htmlspecialchars($f_facebook); ?>" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -53,12 +53,12 @@ z-index: 2147483647;">
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="index">Home</a></li>
-                    <li><a href="index#calc">Sell Your Phone</a></li>
-                    <li><a href="index#how-it-works">How It Works</a></li>
-                    <li><a href="index#why-choose">Why SellMyPhone Dubai</a></li>
-                    <li><a href="index#faq">FAQs</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>index">Home</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>index#calc">Sell Your Phone</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>index#how-it-works">How It Works</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>index#why-choose">Why PhoneDubai</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>index#faq">FAQs</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>contact">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -66,9 +66,9 @@ z-index: 2147483647;">
             <div class="footer-col">
                 <h4>Popular Brands</h4>
                 <ul>
-                    <li><a href="index#calc">iPhone</a></li>
-                    <li><a href="index#calc">Samsung</a></li>
-                    <li><a href="index#calc">All Models</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>sell-iphone">iPhone</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>sell-samsung">Samsung</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>index#calc">All Models</a></li>
                 </ul>
             </div>
 

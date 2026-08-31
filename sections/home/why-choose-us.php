@@ -21,7 +21,7 @@ $wcu_highlight_items = home_rows($conn, 'home_wcu_highlight_items');
                 </span>
             </div>
         
-            <h2 class="wcu-title"><?php echo $wcu['title_pre'] ?? 'Why Choose SellMyPhone'; ?> <span class="highlight"><?php echo $wcu['title_highlight'] ?? 'Dubai?'; ?></span></h2>
+            <h2 class="wcu-title"><?php echo $wcu['title_pre'] ?? 'Why Choose Phone'; ?> <span class="highlight"><?php echo $wcu['title_highlight'] ?? 'Dubai?'; ?></span></h2>
             <span class="wcu-underline"></span>
         </div>
 
@@ -35,8 +35,8 @@ $wcu_highlight_items = home_rows($conn, 'home_wcu_highlight_items');
                     <div class="wcu-icon">
                         <i class="<?php echo htmlspecialchars($card['icon_class']); ?> fs-4" style="color:<?php echo htmlspecialchars($card['icon_color'] ?: '#ebb917'); ?>;"></i>
                     </div>
-                    <h4 class="wcu-card-title reveal-item"><?php echo $card['title']; ?></h4>
-                    <p class="wcu-card-desc reveal-item"><?php echo $card['description']; ?></p>
+                    <h3 class="wcu-card-title"><?php echo $card['title']; ?></h3>
+                    <p class="wcu-card-desc"><?php echo $card['description']; ?></p>
                 </div>
                 <?php endforeach; ?>
 

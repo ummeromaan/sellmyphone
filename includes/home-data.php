@@ -28,6 +28,7 @@ if (!function_exists('home_img')) {
     // Builds an assets/images/... path, falling back to the original image if the DB value is empty
     function home_img($name, $fallback = '') {
         $name = $name !== '' && $name !== null ? $name : $fallback;
-        return $name ? 'assets/images/' . $name : '';
+        $base = defined('BASE_URL') ? BASE_URL : '/';
+        return $name ? $base . 'assets/images/' . $name : '';
     }
 }

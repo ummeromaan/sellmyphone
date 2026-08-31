@@ -27,7 +27,7 @@ $faq_cta_badges = !empty($faq_cta['badges']) ? array_map('trim', explode(',', $f
                   <?php echo $faq_header['tag_text'] ?? "FAQ's"; ?>
                 </span>
             </div>
-                        <h3 class="faqc-faq-title"><?php echo $faq_header['title'] ?? 'Frequently Asked Questions'; ?></h3>
+                        <h2 class="faqc-faq-title"><?php echo $faq_header['title'] ?? 'Frequently Asked Questions'; ?></h2>
                     <span class="faqc-faq-underline"></span>
                     </div>
 
@@ -38,7 +38,7 @@ $faq_cta_badges = !empty($faq_cta['badges']) ? array_map('trim', explode(',', $f
                             <?php foreach ($faq_col1 as $f): ?>
                             <div class="faqc-faq-item">
                                 <button type="button" class="faqc-faq-question">
-                                    <?php echo $f['question']; ?>
+                                     <h3 class="faq-q"><?php echo $f['question']; ?></h3>
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </button>
                                 <div class="faqc-faq-answer">
@@ -53,7 +53,7 @@ $faq_cta_badges = !empty($faq_cta['badges']) ? array_map('trim', explode(',', $f
                             <?php foreach ($faq_col2 as $f): ?>
                             <div class="faqc-faq-item">
                                 <button type="button" class="faqc-faq-question">
-                                    <?php echo $f['question']; ?>
+                                   <h3 class="faq-q"><?php echo $f['question']; ?></h3>
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </button>
                                 <div class="faqc-faq-answer">
@@ -83,7 +83,7 @@ $faq_cta_badges = !empty($faq_cta['badges']) ? array_map('trim', explode(',', $f
             </div>
 
             <div class="faqc-cta-left">
-                <h3 class="faqc-cta-title"><?php echo $faq_cta['title'] ?? 'Ready to Sell Your Phone?'; ?></h3>
+                <h2 class="faqc-cta-title"><?php echo $faq_cta['title'] ?? 'Ready to Sell Your Phone?'; ?></h2>
                 <p class="faqc-cta-desc"><?php echo $faq_cta['description'] ?? ''; ?></p>
             </div>
 

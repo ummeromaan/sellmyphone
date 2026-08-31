@@ -62,7 +62,7 @@ if (empty($related)) {
 
 <div class="container blog-page-wrap">
 
-    <a href="blog.php" class="blog-back-link"><i class="fa-solid fa-arrow-left"></i> Back to Blogs</a>
+    <a href="<?php echo BASE_URL; ?>blog" class="blog-back-link"><i class="fa-solid fa-arrow-left"></i> Back to Blogs</a>
 
     <div class="blog-title-card">
         <h1><?php echo htmlspecialchars($post['title']); ?></h1>
@@ -77,7 +77,7 @@ if (empty($related)) {
 
         <div class="blog-single-main">
             <?php if (!empty($post['thumbnail'])): ?>
-            <img src="assets/images/<?php echo htmlspecialchars($post['thumbnail']); ?>" class="blog-single-thumb" alt="<?php echo htmlspecialchars($post['title']); ?>">
+            <img src="<?php echo BASE_URL; ?>assets/images/<?php echo htmlspecialchars($post['thumbnail']); ?>" class="blog-single-thumb" alt="<?php echo htmlspecialchars($post['title']); ?>">
             <?php endif; ?>
 
             <div class="blog-single-content">
@@ -89,8 +89,8 @@ if (empty($related)) {
         <aside class="related-sidebar">
             <h3>Related Articles</h3>
             <?php foreach ($related as $rel): ?>
-           <a href="blog/<?php echo urlencode($rel['slug']); ?>" class="related-card">
-                <img src="assets/images/<?php echo htmlspecialchars($rel['thumbnail'] ?: 'blog-placeholder.jpg'); ?>" alt="<?php echo htmlspecialchars($rel['title']); ?>">
+           <a href="<?php echo BASE_URL; ?>blog/<?php echo urlencode($rel['slug']); ?>" class="related-card">
+                <img src="<?php echo BASE_URL; ?>assets/images/<?php echo htmlspecialchars($rel['thumbnail'] ?: 'blog-placeholder.jpg'); ?>" alt="<?php echo htmlspecialchars($rel['title']); ?>">
                 <div class="related-card-body">
                     <span class="related-card-title"><?php echo htmlspecialchars($rel['title']); ?></span>
                     <span class="related-card-date"><?php echo date('M j, Y', strtotime($rel['published_date'])); ?></span>

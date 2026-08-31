@@ -38,7 +38,7 @@ $iqc_features = home_rows($conn, 'home_iqc_features');
                         <i class="<?php echo htmlspecialchars($step['icon_class']); ?>"></i>
                     </span>
                 </div>
-                <h4 class="hiw-step-title"><?php echo $step['title']; ?></h4>
+                <h3 class="hiw-step-title"><?php echo $step['title']; ?></h3>
                 <p class="hiw-step-desc"><?php echo $step['description']; ?></p>
             </div>
 
@@ -68,7 +68,7 @@ $iqc_features = home_rows($conn, 'home_iqc_features');
 
                 
                 <!--<div class="iqc-phone-visual">
-                    <img src="assets/images/back.png" alt="Phones" class="iqc-phone-img">
+                    <img src="<?php echo BASE_URL; ?>assets/images/back.png" alt="Phones" class="iqc-phone-img">
                 </div>-->
 
                 <div class="iqc-text">
@@ -139,7 +139,7 @@ $iqc_features = home_rows($conn, 'home_iqc_features');
 <script>
 // "Continue" click -> smooth scroll down to the existing brand cards section
 document.getElementById('iqcContinueBtn').addEventListener('click', function () {
-    var brandsSection = document.getElementById('brands');
+    var brandsSection = document.getElementById('calc');
     if (brandsSection) {
         brandsSection.scrollIntoView({ behavior: 'smooth' });
     }

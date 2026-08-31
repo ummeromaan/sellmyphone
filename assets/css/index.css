@@ -344,7 +344,7 @@
 
 .hiw-step-title {
     color: #16112c;
-    font-size: 15px;
+   font-size: 16px;
     font-weight: 800;
     letter-spacing: 0.5px;
     margin-bottom: 10px;
@@ -1212,15 +1212,16 @@
     justify-content: center;
 }
 
-.tsn-author-info h4 {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 600;
+.tsn-author-info p {
+    color: #ece9e9;
+    font-size: 16px;
+    font-weight: 800;
+   
     margin: 0;
 }
 
 .tsn-author-info span {
-    color: #9b97ac;
+    color: #d0d0db;
     font-size: 14px;
 }
 
@@ -1421,7 +1422,6 @@
 }
 .faqc-faq-title {
     color: #16112c;
-    font-size: 40px;
     font-weight: 700;
     margin: 0;
 }
@@ -1456,13 +1456,16 @@
     border: none;
     text-align: left;
     padding: 15px 18px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #16112c;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+}
+.faq-q{
+    font-size: 16px;
+    font-weight: 600;
+     color: #110c24;
+
 }
 
 .faqc-faq-question i {
@@ -1607,7 +1610,7 @@ justify-content: space-between;
 
 .faqc-cta-title {
     color: #f5f1f1;
-    font-size: 30px;
+  
     font-weight: 700;
     margin-bottom: 6px;
 }

@@ -107,8 +107,6 @@ $brand_features = home_rows($conn, 'home_brand_features');
                     <div class="col-6 col-lg-4">
 
                         <button type="button" class="brand-card brand-card-apple"
-                                data-bs-toggle="pill"
-                                data-bs-target="#apple"
                                 onclick="showbrand('apple')">
 
                             <div class="brand-card-visual">
@@ -142,8 +140,6 @@ $brand_features = home_rows($conn, 'home_brand_features');
                     <div class="col-6 col-lg-4">
 
                         <button type="button" class="brand-card brand-card-samsung"
-                                data-bs-toggle="pill"
-                                data-bs-target="#samsung"
                                 onclick="showbrand('samsung')">
 
                             <div class="brand-card-visual">

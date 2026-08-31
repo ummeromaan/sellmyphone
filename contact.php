@@ -43,14 +43,14 @@ require 'includes/header.php';
 
             <div class="col-lg-6 col-md-12 contact-info px-5">
                 <div class="contact-content mt-5 text-center">
-                    <h3 class=" fw-bold fs-1 text-start">Get In Touch With Us</h3>
+                    <h1 class=" fw-bold fs-1 text-start">Get In Touch With Us</h1>
                     <p class="text-white text-start">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
                 </div>
                  <div>
 
                     <div class="d-flex align-items-center mb-3">
                       <div class="icon-box2 d-flex align-items-center justify-content-center fs-5 m-3"><i class="fa-solid fa-phone-flip text-white"></i></div>
-                      <div class="py-2"> <h3 class="fs-5 fw-bold text-white">Call us</h3>
+                      <div class="py-2"> <h4 class="fs-5 fw-bold text-white">Call us</h4>
                          <a href="tel:<?php echo htmlspecialchars($info['phone']); ?>" class="text-secondary text-decoration-none text-white">
                          <?php echo htmlspecialchars($info['phone']); ?>
                         </a>
@@ -59,7 +59,7 @@ require 'includes/header.php';
 
                     <div class="d-flex align-items-center mb-2">
                      <div class="icon-box2 d-flex align-items-center justify-content-center fs-5 m-3"><i class="fa-solid fa-envelope"></i></div>
-                      <div class="py-2"> <h3 class="fs-5 fw-bold text-white">Email us</h3>
+                      <div class="py-2"> <h4 class="fs-5 fw-bold text-white">Email us</h4>
                          <a href="mailto:<?php echo htmlspecialchars($info['email']); ?>" class="text-secondary text-decoration-none text-white">
                             <?php echo htmlspecialchars($info['email']); ?>
                         </a></div>
@@ -67,7 +67,7 @@ require 'includes/header.php';
 
                     <div class="d-flex align-items-center mb-2">
                       <div class="icon-box2 d-flex align-items-center justify-content-center fs-5 m-3"><i class="fa-solid fa-location-dot text-white"></i></div>
-                      <div class="py-2"><h3 class="fs-5 fw-bold text-white">Visit us</h3>  
+                      <div class="py-2"><h4 class="fs-5 fw-bold text-white">Visit us</h4>  
                         <p class="text-white mb-0"><?php echo htmlspecialchars($info['address']); ?></p>
                        </div>
                     </div>
@@ -75,7 +75,7 @@ require 'includes/header.php';
                 </div>
                 <div class="d-flex-column">
                     <div class="mt-4">
-                        <h3 class="fs-5 fw-bold text-white">Follow us</h3>
+                        <h4 class="fs-5 fw-bold text-white">Follow us</h4>
                     </div>
                     <div class="d-flex gap-4 mt-3 mb-3">
                         <div class="d-flex justify-content-center align-items-center mt-2 icon-box1">
