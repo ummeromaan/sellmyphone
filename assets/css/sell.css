@@ -1041,9 +1041,10 @@
     border: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-     margin-top: 0px !important;   /* brands.css sets 80px on .calc-widget - too much here, no heading/image above it on this page */
+    margin-top: 0px !important;
 }
-#pills-model .row.g-3 {
+
+.calc-widget-plain #pills-model .row.g-3 {
     max-height: none !important;
     overflow: visible !important;
     padding-right: 0 !important;
