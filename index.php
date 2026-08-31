@@ -1,5 +1,5 @@
 <?php
-$page_title = "SellMyPhone | Sell Your Phone for Instant Cash in UAE";
+$page_title = "PhoneDubai | Sell Your Phone for Instant Cash in UAE";
 $meta_description = "Turn your old phone into instant cash. We buy iPhones and Samsung phones in any condition with free pickup across UAE and same-day secure payment.";
 $meta_keywords = "sell phone UAE, sell iPhone Dubai, sell Samsung Dubai, phone buyback UAE";
 ?>

@@ -66,6 +66,8 @@ while ($row = mysqli_fetch_assoc($acc_result)) {
 
 <li class="nav-item d-none" id="final-tab-item">
     <button class="nav-link"
+     data-bs-toggle="pill"
+            data-bs-target="#disabled-tab-pane"
             id="disabled-tab"
             type="button">
 
