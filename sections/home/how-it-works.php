@@ -90,34 +90,44 @@ $iqc_features = home_rows($conn, 'home_iqc_features');
 
             </div>
 
-            <!-- Middle: quote form card - kept static, this is the functional calculator form -->
-            <div class="iqc-form-card">
+           
+            <!-- Middle: 4-step guide card (visual only, scrolls down to the real calculator) -->
+<div class="iqc-form-card iqc-steps-card">
 
-                <select class="iqc-select" id="iqcBrand">
-                    <option value="" selected disabled>Select Brand</option>
-                    <option value="apple">Apple</option>
-                    <option value="samsung">Samsung</option>
-                </select>
+    <div class="iqc-steps-icon">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+    </div>
 
-                <select class="iqc-select" id="iqcStorage">
-                    <option value="" selected disabled>Storage Capacity</option>
-                    <option value="128gb">128GB</option>
-                    <option value="256gb">256GB</option>
-                    <option value="512gb">512GB</option>
-                </select>
+    <h3 class="iqc-steps-title">How it works in Minutes</h3>
+    <p class="iqc-steps-desc">Just a few taps stand between you and your payout.</p>
 
-                <select class="iqc-select" id="iqcCondition">
-                    <option value="" selected disabled>Condition</option>
-                    <option value="flawless">Flawless</option>
-                    <option value="good">Good</option>
-                    <option value="fair">Fair</option>
-                </select>
+    <div class="iqc-steps-row">
+        <div class="iqc-steps-item">
+            <div class="iqc-steps-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <span class="iqc-steps-label">Select<br>Model</span>
+        </div>
+        <span class="iqc-steps-arrow">&rarr;</span>
+        <div class="iqc-steps-item">
+            <div class="iqc-steps-circle"><i class="fa-solid fa-database"></i></div>
+            <span class="iqc-steps-label">Choose<br>Storage</span>
+        </div>
+        <span class="iqc-steps-arrow">&rarr;</span>
+        <div class="iqc-steps-item">
+            <div class="iqc-steps-circle"><i class="fa-solid fa-shield-halved"></i></div>
+            <span class="iqc-steps-label">Pick<br>Condition</span>
+        </div>
+        <span class="iqc-steps-arrow">&rarr;</span>
+        <div class="iqc-steps-item">
+            <div class="iqc-steps-circle"><i class="fa-solid fa-gift"></i></div>
+            <span class="iqc-steps-label">Add<br>Accessories</span>
+        </div>
+    </div>
 
-                <button type="button" class="iqc-continue-btn" id="iqcContinueBtn">
-                    Continue
-                </button>
+    <button type="button" class="iqc-continue-btn" id="iqcContinueBtn">
+        Get My Price <i class="fa-solid fa-arrow-right"></i>
+    </button>
 
-            </div>
+</div>
 
             <!-- Right: estimated value card -->
             <div class="iqc-estimate-card">

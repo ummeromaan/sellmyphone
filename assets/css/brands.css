@@ -583,6 +583,21 @@
     .brand-card {
         margin-bottom: 16px;
     }
+    
+
+    /* ---- Brand cards: one per row on mobile instead of 2-up ---- */
+    #brand-buttons .row > .col-6 {
+        flex: 0 0 100%;
+        width: 80%;
+        max-width: 80%;
+    }
+
+    /* ---- Trim the excess top/bottom margins around the widget on mobile ---- */
+    .brand-section {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    
 
     /* ---- Features bar: 2 per row instead of 4 squeezed into one row,
        vertical spacing (outer margin/padding + inner icon/title/divider
@@ -713,9 +728,14 @@
         font-size: 9px;
     }
 }
-
-/*for Very small phones*/
+/*for very small mobs*/
 @media (max-width: 420px) {
+    #brand-buttons .row > .col-6 {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
     .brand-card {
         min-height: 170px;
         padding: 8px;

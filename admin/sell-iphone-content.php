@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
         case 'update_hero':
             home_save_single($conn, 'iphone_hero',
                 ['badge_text', 'title_pre', 'title_highlight', 'subtitle', 'button_text', 'button_link'],
-                ['hero_image' => 'hero_image']);
+               ['hero_image' => 'hero_image', 'bg_image' => 'bg_image']);
             break;
 
         // ---------- BRAND CARD ----------
@@ -259,6 +259,13 @@ require_once 'includes/sidebar.php';
                             <img src="<?php echo home_admin_img($hero['hero_image']); ?>" class="hc-preview mb-2">
                         <?php endif; ?>
                         <input type="file" class="form-control" name="hero_image">
+                    </div>
+                     <div class="col-md-4">
+                        <label class="form-label fw-bold">Background Image (full hero banner background)</label>
+                        <?php if (!empty($hero['bg_image'])): ?>
+                            <img src="<?php echo home_admin_img($hero['bg_image']); ?>" class="hc-preview mb-2">
+                        <?php endif; ?>
+                        <input type="file" class="form-control" name="bg_image">
                     </div>
                 </div>
             </div>

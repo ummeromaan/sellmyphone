@@ -60,7 +60,7 @@ $hero_stats    = home_rows($conn, 'home_hero_stats');
       <!-- Right side is intentionally empty - the phones already show
            in the section's background image -->
       <div class="col-lg-5 col-md-4 phone-visuals reveal-on-scroll">
-        <img class="reveal-item" src="<?php echo htmlspecialchars(home_img($hero['side_image'] ?? '', 'fons.png')); ?>">
+        <img class="reveal-item" src="<?php echo htmlspecialchars(home_img($hero['side_image'] ?? '', 'fons.webp')); ?>">
       </div>
 
     </div>

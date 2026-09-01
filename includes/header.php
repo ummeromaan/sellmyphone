@@ -37,7 +37,10 @@ if ($page_slug === 'index' || $page_slug === '') {
 }
 
 require_once 'admin/includes/db.php';
-
+require_once 'includes/home-data.php';
+$branding_row = home_single($conn, 'home_branding');
+$footer_row   = home_single($conn, 'home_footer');
+$nav_whatsapp = !empty($footer_row['whatsapp_number']) ? $footer_row['whatsapp_number'] : '971502166562';
 $seo_row = [];
 $slug_escaped = mysqli_real_escape_string($conn, $page_slug);
 $seo_result = mysqli_query($conn, "SELECT * FROM page_seo WHERE page_slug = '$slug_escaped' LIMIT 1");
@@ -48,7 +51,7 @@ if ($seo_result && mysqli_num_rows($seo_result) > 0) {
 $page_title       = $seo_row['page_title'] ?? 'PhoneDubai | Sell Your Phone for Instant Cash in UAE';
 $meta_description = $seo_row['meta_description'] ?? 'Sell your old phone for the best price in UAE. Instant valuation, free pickup, and quick secure payment for iPhones, Samsung, and more.';
 $meta_keywords    = $seo_row['meta_keywords'] ?? 'sell phone UAE, sell iPhone Dubai, sell Samsung Dubai, phone buyback UAE, cash for old phone';
-$meta_robots = $meta_robots ?? 'index, follow, max-image-preview:large, max-snippet:-1';
+$meta_robots = !empty($seo_row['meta_robots']) ? $seo_row['meta_robots'] : 'index, follow, max-image-preview:large, max-snippet:-1';
 
 // Canonical URL - built automatically from the current page
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
@@ -90,7 +93,7 @@ if (!defined('BASE_URL')) {
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/brands.js"></script>
-   <link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>assets/images/icon.png">
+   <link rel="icon" type="image/webp" href="<?php echo htmlspecialchars(home_img($branding_row['favicon'] ?? '', 'icon.webp')); ?>">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/header.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/index.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/brands.css">
@@ -110,7 +113,7 @@ if (!defined('BASE_URL')) {
 
     <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center" href="<?php echo BASE_URL; ?>index">
-      <img src="<?php echo BASE_URL; ?>assets/images/phonedubai.png" alt="Phone Dubai" width="180" height="70">
+     <img src="<?php echo htmlspecialchars(home_img($branding_row['logo'] ?? '', 'phonedubai.png')); ?>" alt="Phone Dubai" width="180" height="70">
     </a>
 
     <!-- 3 lines button (show on small screen) -->
@@ -125,51 +128,43 @@ if (!defined('BASE_URL')) {
 
     <!-- Navigation links -->
     <div class="collapse navbar-collapse" id="navbarNav">
-
-      <ul class="navbar-nav mx-auto gap-3">
+<ul class="navbar-nav mx-auto gap-3">
 
         <li class="nav-item mx-2">
-          <a class="nav-link <?php echo $active_page == 'home' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>index">Home</a>
+
+<a class="nav-link <?php echo $active_page == 'home' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>index"><?php echo htmlspecialchars($branding_row['nav_home'] ?? 'Home'); ?></a>
         </li>
-
-        <li class="nav-item mx-2">
-          <a class="nav-link <?php echo $active_page == 'about' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>about">About</a>
-        </li>
-
-        <li class="nav-item mx-2">
-  <a class="nav-link <?php echo $active_page == 'sell-samsung' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>sell-samsung">Sell Samsung</a>
-</li>
-  <li class="nav-item mx-2">
-  <a class="nav-link <?php echo $active_page == 'sell-iphone' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>sell-iphone">Sell iPhone</a>
-</li>
-
-        <li class="nav-item mx-2">
-          <!-- Goes to the Brands section on the homepage, works from any page -->
-          <a class="nav-link" href="<?php echo BASE_URL; ?>index#calc">Brands</a>
-        </li>
-
-        <li class="nav-item mx-2">
-          <a class="nav-link <?php echo $active_page == 'blog' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>blog">Blogs</a>
-        </li>
-
-        <li class="nav-item mx-2">
-          <!-- Goes to the Testimonials section on the homepage, works from any page -->
-          <a class="nav-link" href="<?php echo BASE_URL; ?>index#testimonials">Testimonials</a>
-        </li>
-
-        <li class="nav-item mx-2">
-          <a class="nav-link <?php echo $active_page == 'contact' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>contact">Contact</a>
-        </li>
-      </ul>
-
+         <li class="nav-item mx-2">
+<a class="nav-link <?php echo $active_page == 'about' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>about"><?php echo htmlspecialchars($branding_row['nav_about'] ?? 'About'); ?></a>
+         </li>
+          <li class="nav-item mx-2">
+<a class="nav-link <?php echo $active_page == 'sell-samsung' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>sell-samsung"><?php echo htmlspecialchars($branding_row['nav_sell_samsung'] ?? 'Sell Samsung'); ?></a>
+          </li>
+           <li class="nav-item mx-2">
+<a class="nav-link <?php echo $active_page == 'sell-iphone' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>sell-iphone"><?php echo htmlspecialchars($branding_row['nav_sell_iphone'] ?? 'Sell iPhone'); ?></a>
+           </li>
+            <li class="nav-item mx-2">
+<a class="nav-link" href="<?php echo BASE_URL; ?>index#calc"><?php echo htmlspecialchars($branding_row['nav_brands'] ?? 'Brands'); ?></a>
+            </li>
+             <li class="nav-item mx-2">
+<a class="nav-link <?php echo $active_page == 'blog' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>blog"><?php echo htmlspecialchars($branding_row['nav_blog'] ?? 'Blogs'); ?></a>
+             </li>
+              <li class="nav-item mx-2">
+<a class="nav-link" href="<?php echo BASE_URL; ?>index#testimonials"><?php echo htmlspecialchars($branding_row['nav_testimonials'] ?? 'Testimonials'); ?></a>
+              </li>
+               <li class="nav-item mx-2">
+<a class="nav-link <?php echo $active_page == 'contact' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>contact"><?php echo htmlspecialchars($branding_row['nav_contact'] ?? 'Contact'); ?></a>
+               </li>
+</ul>
+     
       <!-- WhatsApp CTA -->
-      <a href="https://wa.me/971502166562" target="_blank" class="whatsapp-cta">
-        <i class="fa-brands fa-whatsapp fs-4" style="color:#0a0820;"></i>
-        <span class="whatsapp-text">
-          <strong>+971502166562</strong>
-          <small>Chat on WhatsApp</small>
-        </span>
-      </a>
+     <a href="https://wa.me/<?php echo htmlspecialchars($nav_whatsapp); ?>" target="_blank" class="whatsapp-cta">
+    <i class="fa-brands fa-whatsapp fs-4" style="color:#0a0820;"></i>
+    <span class="whatsapp-text">
+        <strong>+<?php echo htmlspecialchars($nav_whatsapp); ?></strong>
+        <small>Chat on WhatsApp</small>
+    </span>
+</a>
 
     </div>
   </div>

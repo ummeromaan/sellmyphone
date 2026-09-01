@@ -18,7 +18,7 @@ html {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 10px 15px;
+    padding: 5px 10px;
     background-color: #ffffff;
     transition: box-shadow 0.3s ease, padding 0.3s ease;
 }
@@ -90,11 +90,9 @@ html {
 .custom-navbar .navbar-toggler-icon {
     filter: invert(1);
 }
-
-/* Responsive spacing on small screens */
 @media (max-width: 991px) {
     .custom-navbar {
-        padding: 10px 20px;
+        padding: 5px 10px;
     }
     .whatsapp-cta {
         margin: 15px 0 0 0;
@@ -106,10 +104,9 @@ html {
         height: auto;
     }
 
-    
     .custom-navbar .navbar-collapse {
         position: absolute;
-        top: 100%; 
+        top: 100%;
         left: 0;
         right: 0;
         background-color: #ffffff;
@@ -117,16 +114,20 @@ html {
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         z-index: 999;
     }
-  
 
- 
-}
+    
+    .custom-navbar .navbar-nav {
+        gap: 6px;               /* consistent vertical gap between items */
+    }
 
+    .custom-navbar .nav-link {
+        display: inline-block;   /* hug the text instead of full row width */
+        width: 100%;
+        padding: 10px 16px;      /* gap between text and highlight edge */
+        margin: 0;
+    }
 
-
-@media (max-width: 575px) {
-    .custom-navbar .navbar-brand img {
-        width: 110px;
-        height: auto;
+    .nav-link.active {
+        padding: 10px 16px;      /* same padding as non-active, no jump */
     }
 }

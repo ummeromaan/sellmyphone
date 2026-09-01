@@ -23,8 +23,8 @@ $brand_features = home_rows($conn, 'home_brand_features');
         <div class="brand-hero-wrap">
 
             <!-- Dynamic left/right phone images (editable from Admin > Home Page Content) -->
-            <img src="<?php echo htmlspecialchars(home_img($brands_header['left_image'] ?? '', 'gold.png')); ?>" alt="iPhone" class="brand-side-phone brand-side-phone-left">
-            <img src="<?php echo htmlspecialchars(home_img($brands_header['right_image'] ?? '', 's.png')); ?>" alt="Samsung" class="brand-side-phone brand-side-phone-right">
+            <img src="<?php echo htmlspecialchars(home_img($brands_header['left_image'] ?? '', 'gold.webp')); ?>" alt="iPhone" class="brand-side-phone brand-side-phone-left">
+            <img src="<?php echo htmlspecialchars(home_img($brands_header['right_image'] ?? '', 's.webp')); ?>" alt="Samsung" class="brand-side-phone brand-side-phone-right">
 
             <div class="brand-header text-center mb-5" id="brand-header">
 
@@ -143,7 +143,7 @@ $brand_features = home_rows($conn, 'home_brand_features');
                                 onclick="showbrand('samsung')">
 
                             <div class="brand-card-visual">
-                                <img src="<?php echo htmlspecialchars(home_img($samsung['phone_image'] ?? '', 'sam.png')); ?>" alt="Samsung" class="brand-phone-img">
+                                <img src="<?php echo htmlspecialchars(home_img($samsung['phone_image'] ?? '', 'sam.webp')); ?>" alt="Samsung" class="brand-phone-img">
                             </div>
 
                             <span class="brand-card-divider"></span>

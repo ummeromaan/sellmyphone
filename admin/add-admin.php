@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_admin'])) {
 
     $username         = mysqli_real_escape_string($conn, trim($_POST['username']));
     $email            = mysqli_real_escape_string($conn, trim($_POST['email']));
-    $password         = mysqli_real_escape_string($conn, $_POST['password']);
-    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+    $password         = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
 
     if ($password !== $confirm_password) {
         $_SESSION['msg'] = "<div class='alert alert-danger'>Password and Confirm Password do not match.</div>";
@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_admin'])) {
         exit();
     }
 
-    
     $check = mysqli_query($conn, "SELECT * FROM admin WHERE Name='$username' LIMIT 1");
     if (mysqli_num_rows($check) > 0) {
         $_SESSION['msg'] = "<div class='alert alert-danger'>Already reserved username.</div>";
@@ -37,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_admin'])) {
         exit();
     }
 
-   
     $check_email = mysqli_query($conn, "SELECT * FROM admin WHERE email='$email' LIMIT 1");
     if (mysqli_num_rows($check_email) > 0) {
         $_SESSION['msg'] = "<div class='alert alert-danger'>Already reserved email.</div>";
@@ -45,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_admin'])) {
         exit();
     }
 
-    $sql = "INSERT INTO admin (Name, Password, email, Role) VALUES ('$username', '$password', '$email', 'admin')";
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO admin (Name, `password`, email, Role) VALUES ('$username', '$hashed_password', '$email', 'admin')";
 
     if (mysqli_query($conn, $sql)) {
         $_SESSION['msg'] = "<div class='alert alert-success w-100 mb-0'>Admin Added </div>";

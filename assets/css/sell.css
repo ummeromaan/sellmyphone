@@ -123,9 +123,11 @@
         min-height: auto !important;
     }
 
+    .samsung-hero-container .container-fluid,
+    .samsung-hero-container .samsung-hero-fluid-wrap,
     .samsung-hero-fluid-wrap {
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: 20px !important;
+        padding-right: 10px !important;
     }
 
     .samsung-hero-content1 {
@@ -142,7 +144,6 @@
         max-width: 380px;
     }
 }
-
 /*brand -section*/
 
 
@@ -545,7 +546,6 @@
 /*series*/
 
 /* ================= Samsung Page - Series Cards Section (separate section) ================= */
-/* ================= Samsung Page - Series Cards Section (separate section) ================= */
 
 .samsung-series-section {
     background-color: #ffffff;
@@ -653,6 +653,8 @@
     padding: 26px 20px;
     box-shadow: 0 4px 14px rgba(10, 8, 32, 0.05);
     display: flex;
+     align-items: center; 
+    text-align: center; 
     flex-direction: column;
     transition: all 0.25s ease;
 }
@@ -673,6 +675,8 @@
     background: #0a0820;
     color: #ebb917;
     font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 18px;
 }
 
@@ -681,6 +685,7 @@
     font-size: 17px;
     font-weight: 700;
     margin-bottom: 10px;
+     width: 100%; 
 }
 
 .samsung-series-card-title span {

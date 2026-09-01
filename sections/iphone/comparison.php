@@ -32,9 +32,9 @@ $brand_name = $cmp['brand_name'] ?? 'SellMyPhone';
           <tr>
             <td class="samsung-row-label" data-label="Feature"><?php echo htmlspecialchars($r['feature']); ?></td>
             <td class="samsung-col-highlight" data-label="<?php echo htmlspecialchars($brand_name); ?>"><?php echo nl2br(htmlspecialchars($r['col1_value'])); ?></td>
-            <td><?php echo nl2br(htmlspecialchars($r['col2_value'])); ?></td>
-            <td><?php echo nl2br(htmlspecialchars($r['col3_value'])); ?></td>
-            <td><?php echo nl2br(htmlspecialchars($r['col4_value'])); ?></td>
+           <td data-label="<?php echo htmlspecialchars(str_replace("\n", ' ', $cmp['col2_header'] ?? 'Deira / Mall Phone Shops')); ?>"><?php echo nl2br(htmlspecialchars($r['col2_value'])); ?></td>
+          <td data-label="<?php echo htmlspecialchars(str_replace("\n", ' ', $cmp['col3_header'] ?? 'Online Classified Ads (Dubizzle)')); ?>"><?php echo nl2br(htmlspecialchars($r['col3_value'])); ?></td>
+          <td data-label="<?php echo htmlspecialchars(str_replace("\n", ' ', $cmp['col4_header'] ?? 'Carrier & Store Trade-Ins')); ?>"><?php echo nl2br(htmlspecialchars($r['col4_value'])); ?></td>
           </tr>
           <?php endforeach; ?>
         </tbody>

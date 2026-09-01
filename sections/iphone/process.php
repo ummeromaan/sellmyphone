@@ -3,7 +3,7 @@ require_once 'admin/includes/db.php';
 require_once 'includes/home-data.php';
 $process = home_single($conn, 'iphone_process');
 $steps = home_rows($conn, 'iphone_process_steps');
-if (empty($steps)) { $steps = [['icon'=>'fa-solid fa-file-invoice','detail_title'=>'','detail_desc'=>'']]; }
+if (empty($steps)) { $steps = [['icon'=>'','detail_title'=>'','detail_desc'=>'']]; }
 ?>
 <section id="samsung-process" class="samsung-process-section">
   <div class="container-fluid samsung-process-wrap">
@@ -34,14 +34,19 @@ if (empty($steps)) { $steps = [['icon'=>'fa-solid fa-file-invoice','detail_title
   </div>
 </section>
 
+
 <script>
 document.querySelectorAll('.samsung-process-step').forEach(function (step) {
     step.addEventListener('click', function () {
-        document.querySelectorAll('.samsung-process-step').forEach(function (s) { s.classList.remove('active'); });
-        step.classList.add('active');
-        document.getElementById('samsungProcessIcon').className = step.getAttribute('data-icon');
-        document.getElementById('samsungProcessTitle').innerHTML = step.getAttribute('data-title');
-        document.getElementById('samsungProcessDesc').innerHTML = step.getAttribute('data-desc');
+    document.querySelectorAll('.samsung-process-step').forEach(function (s) { s.classList.remove('active'); });
+    step.classList.add('active');
+    var iconWrap = document.querySelector('.samsung-process-card-icon');
+    iconWrap.innerHTML = '<i id="samsungProcessIcon" class="' + step.getAttribute('data-icon') + '"></i>';
+     if (window.FontAwesome && FontAwesome.dom) {
+     FontAwesome.dom.i2svg();
+    }
+    document.getElementById('samsungProcessTitle').innerHTML = step.getAttribute('data-title');
+    document.getElementById('samsungProcessDesc').innerHTML = step.getAttribute('data-desc');
     });
 });
 </script>

@@ -30,11 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
 
         // ---------- SITE BRANDING (favicon + nav logo) ----------
         case 'update_branding':
-            home_save_single($conn, 'home_branding',
-                [],
-                ['favicon' => 'favicon', 'logo' => 'logo']);
-            break;
-
+    home_save_single($conn, 'home_branding',
+        ['nav_home', 'nav_about', 'nav_sell_samsung', 'nav_sell_iphone', 'nav_brands', 'nav_blog', 'nav_testimonials', 'nav_contact'],
+        ['favicon' => 'favicon', 'logo' => 'logo']);
+    break;
+       
         // ---------- FOOTER & CONTACT INFO (also powers floating WhatsApp button) ----------
         case 'update_footer':
             home_save_single($conn, 'home_footer',
@@ -186,11 +186,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
     }
 
     $_SESSION['msg'] = "<div class='alert alert-success w-50 mb-0'>Home Page Updated.</div>";
-    header("Location: home-content.php?open=" . urlencode($section));
+    header("Location: home-content.php?tab=" . urlencode($section));
     exit();
 }
 
-$open = isset($_GET['open']) ? $_GET['open'] : 'branding';
+$tab = isset($_GET['tab']) ? $_GET['tab'] : 'branding';
 
 // ==================================================================
 //  Load everything fresh for display
@@ -259,17 +259,32 @@ require_once 'includes/sidebar.php';
     (Book Free Pickup, brand calculator steps, etc.) are not editable from here since they're functional, not content.
 </p>
 
-<div class="accordion" id="homeAccordion">
+<div class="ct-shell mt-3">
+
+    <!-- Section nav -->
+    <div class="ct-nav nav flex-column" role="tablist">
+        <a class="nav-link <?php echo $tab=='branding' ? 'active' : ''; ?>" href="?tab=branding"><i class="fa-solid fa-image"></i> Site Branding</a>
+        <a class="nav-link <?php echo $tab=='hero' ? 'active' : ''; ?>" href="?tab=hero"><i class="fa-solid fa-house"></i> Hero Section</a>
+        <a class="nav-link <?php echo $tab=='brands' ? 'active' : ''; ?>" href="?tab=brands"><i class="fa-solid fa-mobile"></i> Brand Calculator</a>
+        <a class="nav-link <?php echo $tab=='hiw' ? 'active' : ''; ?>" href="?tab=hiw"><i class="fa-solid fa-list-check"></i> How It Works & Quote</a>
+        <a class="nav-link <?php echo $tab=='wcu' ? 'active' : ''; ?>" href="?tab=wcu"><i class="fa-solid fa-star"></i> Why Choose Us</a>
+        <a class="nav-link <?php echo $tab=='testimonials' ? 'active' : ''; ?>" href="?tab=testimonials"><i class="fa-solid fa-comment-dots"></i> Testimonials</a>
+        <a class="nav-link <?php echo $tab=='faq' ? 'active' : ''; ?>" href="?tab=faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+        <a class="nav-link <?php echo $tab=='footer' ? 'active' : ''; ?>" href="?tab=footer"><i class="fa-solid fa-shoe-prints"></i> Footer & Contact Info</a>
+    </div>
+
+    <!-- Panel -->
+    <div class="ct-panel">
 
     <!-- ============ SITE BRANDING (Favicon + Nav Logo) ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button <?php echo $open!='branding'?'collapsed':''; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#secBranding">
-                <i class="fa-solid fa-image mx-2"></i> Site Branding (Favicon &amp; Nav Logo)
-            </button>
-        </h2>
-        <div id="secBranding" class="accordion-collapse collapse <?php echo $open=='branding'?'show':''; ?>">
-            <div class="accordion-body">
+    <?php if ($tab == 'branding'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-image"></i> Site Branding (Favicon &amp; Nav Logo)</h3>
+        </div>
+    </div>
+
 
                 <form method="POST" enctype="multipart/form-data" class="hc-card">
                     <input type="hidden" name="action" value="update_branding">
@@ -292,23 +307,64 @@ require_once 'includes/sidebar.php';
                             <?php endif; ?>
                         </div>
                     </div>
+                  <hr class="my-4">
+<h6 class="fw-bold mb-3">Nav Bar Link Labels</h6>
+<div class="row g-3">
+    <div class="col-md-3">
+        <label class="form-label">Home</label>
+        <input type="text" class="form-control" name="nav_home" value="<?php echo htmlspecialchars($branding['nav_home'] ?? 'Home'); ?>">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">About</label>
+        <input type="text" class="form-control" name="nav_about" value="<?php echo htmlspecialchars($branding['nav_about'] ?? 'About'); ?>">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Sell Samsung</label>
+        <input type="text" class="form-control" name="nav_sell_samsung" value="<?php echo htmlspecialchars($branding['nav_sell_samsung'] ?? 'Sell Samsung'); ?>">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Sell iPhone</label>
+        <input type="text" class="form-control" name="nav_sell_iphone" value="<?php echo htmlspecialchars($branding['nav_sell_iphone'] ?? 'Sell iPhone'); ?>">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Brands</label>
+        <input type="text" class="form-control" name="nav_brands" value="<?php echo htmlspecialchars($branding['nav_brands'] ?? 'Brands'); ?>">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Blogs</label>
+        <input type="text" class="form-control" name="nav_blog" value="<?php echo htmlspecialchars($branding['nav_blog'] ?? 'Blogs'); ?>">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Testimonials</label>
+        <input type="text" class="form-control" name="nav_testimonials" value="<?php echo htmlspecialchars($branding['nav_testimonials'] ?? 'Testimonials'); ?>">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Contact</label>
+        <input type="text" class="form-control" name="nav_contact" value="<?php echo htmlspecialchars($branding['nav_contact'] ?? 'Contact'); ?>">
+    </div>
+</div>
+<p class="text-muted mt-2 mb-0" style="font-size:13px;">
+    WhatsApp number (nav button + floating button) is edited on the
+    <a href="?tab=footer">Footer &amp; Contact Info</a> tab — it's shared across the whole site.
+</p>
+            
+
 
                     <button type="submit" class="btn up-btn mt-3">Save Branding</button>
                 </form>
 
-            </div>
+
+    <?php endif; ?>
+
+    <!-- ============ HERO ============ -->
+    <?php if ($tab == 'hero'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-house"></i> Hero Section</h3>
         </div>
     </div>
 
-    <!-- ============ HERO ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button <?php echo $open!='hero'?'collapsed':''; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#secHero">
-                <i class="fa-solid fa-house mx-2"></i> Hero Section
-            </button>
-        </h2>
-        <div id="secHero" class="accordion-collapse collapse <?php echo $open=='hero'?'show':''; ?>">
-            <div class="accordion-body">
 
                 <form method="POST" enctype="multipart/form-data" class="hc-card">
                     <input type="hidden" name="action" value="update_hero">
@@ -415,19 +471,18 @@ require_once 'includes/sidebar.php';
                     </form>
                 </div>
 
-            </div>
+
+    <?php endif; ?>
+
+    <!-- ============ BRANDS ============ -->
+    <?php if ($tab == 'brands'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-mobile"></i> Brand Calculator Section</h3>
         </div>
     </div>
 
-    <!-- ============ BRANDS ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secBrands">
-                <i class="fa-solid fa-mobile mx-2"></i> Brand Calculator Section
-            </button>
-        </h2>
-        <div id="secBrands" class="accordion-collapse collapse <?php echo $open=='brands'?'show':''; ?>">
-            <div class="accordion-body">
 
                 <form method="POST" enctype="multipart/form-data" class="hc-card">
                     <input type="hidden" name="action" value="update_brands_header">
@@ -545,19 +600,18 @@ require_once 'includes/sidebar.php';
                     </form>
                 </div>
 
-            </div>
+
+    <?php endif; ?>
+
+    <!-- ============ HOW IT WORKS + INSTANT QUOTE ============ -->
+    <?php if ($tab == 'hiw'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-list-check"></i> How It Works &amp; Instant Quote</h3>
         </div>
     </div>
 
-    <!-- ============ HOW IT WORKS + INSTANT QUOTE ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secHiw">
-                <i class="fa-solid fa-list-check mx-2"></i> How It Works &amp; Instant Quote
-            </button>
-        </h2>
-        <div id="secHiw" class="accordion-collapse collapse <?php echo $open=='hiw'?'show':''; ?>">
-            <div class="accordion-body">
 
                 <form method="POST" class="hc-card">
                     <input type="hidden" name="action" value="update_hiw">
@@ -677,19 +731,18 @@ require_once 'includes/sidebar.php';
                     </form>
                 </div>
 
-            </div>
+
+    <?php endif; ?>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <?php if ($tab == 'wcu'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-star"></i> Why Choose Us</h3>
         </div>
     </div>
 
-    <!-- ============ WHY CHOOSE US ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secWcu">
-                <i class="fa-solid fa-star mx-2"></i> Why Choose Us
-            </button>
-        </h2>
-        <div id="secWcu" class="accordion-collapse collapse <?php echo $open=='wcu'?'show':''; ?>">
-            <div class="accordion-body">
 
                 <form method="POST" class="hc-card">
                     <input type="hidden" name="action" value="update_wcu">
@@ -784,19 +837,18 @@ require_once 'includes/sidebar.php';
                     </form>
                 </div>
 
-            </div>
+
+    <?php endif; ?>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <?php if ($tab == 'testimonials'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-comment-dots"></i> Testimonials</h3>
         </div>
     </div>
 
-    <!-- ============ TESTIMONIALS ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secTsn">
-                <i class="fa-solid fa-comment-dots mx-2"></i> Testimonials
-            </button>
-        </h2>
-        <div id="secTsn" class="accordion-collapse collapse <?php echo $open=='testimonials'?'show':''; ?>">
-            <div class="accordion-body">
 
                 <div class="hc-rows">
                     <?php foreach ($testimonials as $t): ?>
@@ -829,19 +881,18 @@ require_once 'includes/sidebar.php';
                     </form>
                 </div>
 
-            </div>
+
+    <?php endif; ?>
+
+    <!-- ============ FAQ ============ -->
+    <?php if ($tab == 'faq'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-circle-question"></i> FAQ</h3>
         </div>
     </div>
 
-    <!-- ============ FAQ ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secFaq">
-                <i class="fa-solid fa-circle-question mx-2"></i> FAQ
-            </button>
-        </h2>
-        <div id="secFaq" class="accordion-collapse collapse <?php echo $open=='faq'?'show':''; ?>">
-            <div class="accordion-body">
 
                 <form method="POST" class="hc-card">
                     <input type="hidden" name="action" value="update_faq_header">
@@ -924,19 +975,18 @@ require_once 'includes/sidebar.php';
                     <button type="submit" class="btn up-btn mt-3">Save CTA Banner</button>
                 </form>
 
-            </div>
+
+    <?php endif; ?>
+
+    <!-- ============ FOOTER & CONTACT INFO ============ -->
+    <?php if ($tab == 'footer'): ?>
+
+    <div class="ct-panel-header">
+        <div>
+            <h3 class="ct-panel-title"><i class="fa-solid fa-shoe-prints"></i> Footer &amp; Contact Info</h3>
         </div>
     </div>
 
-    <!-- ============ FOOTER & CONTACT INFO ============ -->
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secFooter">
-                <i class="fa-solid fa-shoe-prints mx-2"></i> Footer &amp; Contact Info
-            </button>
-        </h2>
-        <div id="secFooter" class="accordion-collapse collapse <?php echo $open=='footer'?'show':''; ?>">
-            <div class="accordion-body">
 
                 <form method="POST" class="hc-card">
                     <input type="hidden" name="action" value="update_footer">
@@ -992,27 +1042,14 @@ require_once 'includes/sidebar.php';
                     <button type="submit" class="btn up-btn mt-3">Save Footer &amp; Contact Info</button>
                 </form>
 
-            </div>
-        </div>
-    </div>
 
-</div><!--accordion-->
+    <?php endif; ?>
+
+    </div><!--ct-panel-->
+
+</div><!--ct-shell-->
 
 </div><!--main content-->
-
-<script>
-// keep the requested accordion tab open on load
-document.addEventListener('DOMContentLoaded', function () {
-    var open = <?php echo json_encode($open); ?>;
-    var map = { branding: 'secBranding', hero: 'secHero', brands: 'secBrands', hiw: 'secHiw', wcu: 'secWcu', testimonials: 'secTsn', faq: 'secFaq', footer: 'secFooter' };
-    if (map[open]) {
-        var el = document.getElementById(map[open]);
-        if (el && !el.classList.contains('show')) {
-            new bootstrap.Collapse(el, { show: true });
-        }
-    }
-});
-</script>
 
 </body>
 </html>

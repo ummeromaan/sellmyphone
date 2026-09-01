@@ -3,7 +3,7 @@ require_once 'admin/includes/db.php';
 require_once 'includes/home-data.php';
 $process = home_single($conn, 'samsung_process');
 $steps = home_rows($conn, 'samsung_process_steps');
-if (empty($steps)) { $steps = [['icon'=>'fa-solid fa-file-invoice','detail_title'=>'','detail_desc'=>'']]; }
+if (empty($steps)) { $steps = [['icon'=>'','detail_title'=>'','detail_desc'=>'']]; }
 ?>
 <section id="samsung-process" class="samsung-process-section">
   <div class="container-fluid samsung-process-wrap">

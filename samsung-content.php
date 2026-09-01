@@ -15,8 +15,8 @@ $brand = 'Samsung';
 $brand_esc = mysqli_real_escape_string($conn, $brand);
 
 // ----------  fetch the prices of models,storage and prices of this model----------
-$result = mysqli_query($conn, "SELECT * FROM phones WHERE brand='$brand_esc' ORDER BY phone_model DESC, storage DESC");
 
+$result = mysqli_query($conn, "SELECT * FROM phones WHERE brand='$brand_esc' ORDER BY phone_model DESC, FIELD(storage, '128GB','256GB','512GB','1TB','2TB') ASC");
 $phoneData = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $model = $row['phone_model'];

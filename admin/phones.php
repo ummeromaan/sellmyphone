@@ -26,8 +26,7 @@ if ($search_esc !== '') {
     $where = "";
 }
 
-$result = mysqli_query($conn, "SELECT * FROM phones $where ORDER BY phone_model ASC, storage ASC");
-
+$result = mysqli_query($conn, "SELECT * FROM phones $where ORDER BY phone_model ASC, FIELD(storage, '128GB','256GB','512GB','1TB','2TB') ASC");
 // ---------- Group all rows by model ----------
 $grouped = [];
 while ($row = mysqli_fetch_assoc($result)) {

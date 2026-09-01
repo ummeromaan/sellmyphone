@@ -49,7 +49,11 @@ if (!function_exists('home_save_single')) {
 
         // make sure the id=1 row exists first
         mysqli_query($conn, "INSERT INTO `$table` (id) VALUES (1) ON DUPLICATE KEY UPDATE id=id");
-        mysqli_query($conn, "UPDATE `$table` SET " . implode(', ', $sets) . " WHERE id=1");
+        $result = mysqli_query($conn, "UPDATE `$table` SET " . implode(', ', $sets) . " WHERE id=1");
+
+        if (!$result) {
+            $_SESSION['msg'] = "<div class='alert alert-danger mb-0'>DB Error (save - $table): " . mysqli_error($conn) . "</div>";
+        }
     }
 }
 
@@ -67,7 +71,11 @@ if (!function_exists('home_row_add')) {
             $vals[] = $name ? "'" . mysqli_real_escape_string($conn, $name) . "'" : "NULL";
         }
         if (empty($cols)) return;
-        mysqli_query($conn, "INSERT INTO `$table` (" . implode(',', $cols) . ") VALUES (" . implode(',', $vals) . ")");
+        $result = mysqli_query($conn, "INSERT INTO `$table` (" . implode(',', $cols) . ") VALUES (" . implode(',', $vals) . ")");
+
+        if (!$result) {
+            $_SESSION['msg'] = "<div class='alert alert-danger mb-0'>DB Error (add - $table): " . mysqli_error($conn) . "</div>";
+        }
     }
 }
 
@@ -85,14 +93,22 @@ if (!function_exists('home_row_update')) {
         }
         if (empty($sets)) return;
         $id = intval($id);
-        mysqli_query($conn, "UPDATE `$table` SET " . implode(', ', $sets) . " WHERE id=$id");
+        $result = mysqli_query($conn, "UPDATE `$table` SET " . implode(', ', $sets) . " WHERE id=$id");
+
+        if (!$result) {
+            $_SESSION['msg'] = "<div class='alert alert-danger mb-0'>DB Error (update - $table): " . mysqli_error($conn) . "</div>";
+        }
     }
 }
 
 if (!function_exists('home_row_delete')) {
     function home_row_delete($conn, $table, $id) {
         $id = intval($id);
-        mysqli_query($conn, "DELETE FROM `$table` WHERE id=$id");
+        $result = mysqli_query($conn, "DELETE FROM `$table` WHERE id=$id");
+
+        if (!$result) {
+            $_SESSION['msg'] = "<div class='alert alert-danger mb-0'>DB Error (delete - $table): " . mysqli_error($conn) . "</div>";
+        }
     }
 }
 

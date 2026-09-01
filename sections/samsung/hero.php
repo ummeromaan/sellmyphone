@@ -3,7 +3,12 @@ require_once 'admin/includes/db.php';
 require_once 'includes/home-data.php';
 $hero = home_single($conn, 'samsung_hero');
 ?>
-<section id="samsung-hero" class="samsung-hero-container reveal-on-scroll">
+
+
+<section id="samsung-hero" class="samsung-hero-container reveal-on-scroll"
+    <?php if (!empty($hero['bg_image'])): ?>
+    style="background-image: url('<?php echo htmlspecialchars(home_img($hero['bg_image'])); ?>');"
+    <?php endif; ?>>
  <div class="samsung-hero-overlay"></div>
   <div class="container-fluid samsung-hero-fluid-wrap position-relative">
     <div class="row align-items-center">
@@ -26,7 +31,7 @@ $hero = home_single($conn, 'samsung_hero');
           </p>
 
           <div class="samsung-h-btns d-flex gap-3">
-            <a href="<?php echo htmlspecialchars($hero['button_link'] ?? '#samsung'); ?>" class="btn samsung-heroo-btn d-flex align-items-center gap-2">
+            <a href="<?php echo htmlspecialchars($hero['button_link'] ?? 'samsung.php#samsung'); ?>" class="btn samsung-heroo-btn d-flex align-items-center gap-2">
                <b><?php echo htmlspecialchars($hero['button_text'] ?? 'Get Instant Price Now'); ?></b>
               <span class="samsung-btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
             </a>
